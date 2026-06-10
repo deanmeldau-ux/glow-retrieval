@@ -348,6 +348,14 @@
       color: var(--black);
     }
     .pricing-btn:hover { opacity: 0.9; }
+    .pricing-reassurance {
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+    .pricing-reassurance strong { color: #999; }
 
     /* GUARANTEE */
     .guarantee-box {
@@ -359,9 +367,63 @@
       margin-top: 48px;
     }
     .guarantee-icon { font-size: 56px; margin-bottom: 20px; }
-    .guarantee-box h2 { font-family: 'Bebas Neue', sans-serif; font-size: 56px; line-height: 1; color: var(--white); margin-bottom: 16px; }
-    .guarantee-box p { font-size: 18px; color: #aaaaaa; max-width: 580px; margin: 0 auto; line-height: 1.7; }
+    .guarantee-box h2 { font-family: 'Bebas Neue', sans-serif; font-size: 56px; line-height: 1; color: var(--white); margin-bottom: 8px; }
+    .guarantee-box > p { font-size: 18px; color: #aaaaaa; max-width: 580px; margin: 0 auto 40px; line-height: 1.7; }
     .guarantee-box strong { color: var(--white); }
+    .guarantee-tiers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .guarantee-tier-item {
+      background: #0d0d0d;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .guarantee-tier-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .guarantee-tier-text {
+      font-size: 15px;
+      color: #aaaaaa;
+      line-height: 1.6;
+    }
+    .guarantee-tier-text strong { color: var(--white); }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid #1a1a1a;
+      padding: 24px 0;
+    }
+    .faq-item:first-child { border-top: 1px solid #1a1a1a; }
+    .faq-q {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: var(--white);
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+    .faq-a {
+      font-size: 16px;
+      color: #aaaaaa;
+      line-height: 1.7;
+    }
+    .faq-a strong { color: var(--white); }
 
     /* WHO ITS FOR */
     .who-grid {
@@ -424,6 +486,8 @@
       .step { flex-direction: column; gap: 8px; padding: 24px 20px; }
       .value-item { flex-direction: column; align-items: flex-start; }
       .guarantee-box { padding: 40px 24px; }
+      .guarantee-tiers { grid-template-columns: 1fr; }
+      .faq-list { padding: 0; }
     }
   </style>
 </head>
@@ -682,6 +746,7 @@
         <li>Full lead classification</li>
       </ul>
       <a href="https://buy.stripe.com/eVqaEX04G0rVgz8clHfEk05" class="pricing-btn" target="_blank" rel="noopener">Start Pilot →</a>
+      <p class="pricing-reassurance">We deliver the full system by Day 14 or <strong>you pay nothing</strong>.<br>No questions. No chase.</p>
     </div>
 
     <div class="pricing-card featured">
@@ -698,6 +763,7 @@
         <li>Ongoing pipeline management</li>
       </ul>
       <a href="https://buy.stripe.com/aFa4gz18KdeHgz82L7fEk07" class="pricing-btn" target="_blank" rel="noopener">Get Started →</a>
+      <p class="pricing-reassurance"><strong>Cancel any time.</strong> No notice period. No lock-in.<br>First month with no activity in your report? It's free.</p>
     </div>
 
     <div class="pricing-card">
@@ -713,6 +779,7 @@
         <li>Monthly pipeline optimisation report</li>
       </ul>
       <a href="https://buy.stripe.com/eVq3cv6t45Mffv485rfEk08" class="pricing-btn" target="_blank" rel="noopener">Apply for Pro →</a>
+      <p class="pricing-reassurance">4-hour response SLA on all escalations.<br>We miss it — <strong>50% credit on that month. Written in the agreement.</strong></p>
     </div>
   </div>
 </section>
@@ -723,10 +790,37 @@
 <section>
   <div class="guarantee-box">
     <div class="guarantee-icon">🛡️</div>
-    <h2>THE ZERO-RISK PROMISE</h2>
+    <h2>WE PUT OUR MONEY<br>WHERE OUR MOUTH IS</h2>
     <p>
-      We don't guarantee bookings no one ethically can. But we guarantee a <strong>working recovery system, professional follow-up coverage, full tracking, and weekly reporting</strong>. If we don't deliver that in your pilot, you don't pay. That simple.
+      Most services hide their guarantee in fine print. Ours is the headline. Every tier has a hard commitment — and if we miss it, it costs us money, not you.
     </p>
+    <div class="guarantee-tiers">
+      <div class="guarantee-tier-item">
+        <div class="guarantee-tier-label">Pilot — R1,500</div>
+        <div class="guarantee-tier-text">
+          We run your full recovery sequence and deliver a weekly report by Day 14.
+          If we don't — <strong>you pay R0. Zero. We don't even send an invoice.</strong>
+          No need to ask. No awkward conversation.
+        </div>
+      </div>
+      <div class="guarantee-tier-item">
+        <div class="guarantee-tier-label">Standard — R2,500/mo</div>
+        <div class="guarantee-tier-text">
+          Cancel any time. No notice period. No minimum term.
+          If your first full month's report shows zero follow-up activity from us —
+          <strong>that month is on us.</strong> You shouldn't pay for nothing.
+        </div>
+      </div>
+      <div class="guarantee-tier-item">
+        <div class="guarantee-tier-label">Pro — R4,500/mo</div>
+        <div class="guarantee-tier-text">
+          Every escalation gets a response within 4 business hours.
+          If we breach that SLA in any given month —
+          <strong>we credit 50% of that month's fee. Written into your agreement.</strong>
+          Accountability isn't optional at this level.
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -767,6 +861,70 @@
       <span class="who-emoji">🔧</span>
       <h3>Home Services</h3>
       <p>Quotes that never got a second touch</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section>
+  <p class="section-label" style="text-align:center">Common Questions</p>
+  <h2 class="section-title" style="text-align:center">THE THINGS PEOPLE<br><span style="color:var(--gold)">ACTUALLY WANT TO KNOW.</span></h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">What if none of my old leads reply?</div>
+      <div class="faq-a">
+        That's a real possibility — and it's why the pilot exists. We're not promising you bookings.
+        We're promising a <strong>working, professional recovery system</strong> that gives those leads a second chance.
+        If the system runs and nobody replies, that tells you something valuable: those leads were truly dead.
+        Either way, you have proof. You don't pay unless we deliver the system itself.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">My leads are 6 months old. Is it too late?</div>
+      <div class="faq-a">
+        Probably not. A well-timed, professional message to someone who enquired 6 months ago
+        and just hasn't booked yet still converts — especially for considered purchases like aesthetic treatments,
+        dental work, or home renovations. <strong>The window is wider than most businesses think.</strong>
+        We'll tell you upfront if the list looks genuinely too old to be worth running.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Who actually sends the messages — a robot or a person?</div>
+      <div class="faq-a">
+        Messages are drafted by our team, approved by you before first use, and sent from a managed account.
+        They read like a human wrote them — because a human did.
+        <strong>We never claim to be clinical staff</strong>, never fabricate information,
+        and never send anything you haven't seen and signed off on first.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What access do you need to my accounts?</div>
+      <div class="faq-a">
+        None. You give us an export of your old leads (a WhatsApp chat export, a spreadsheet, an email thread dump —
+        whatever you have). We do the rest from our own systems.
+        <strong>We never log into your WhatsApp, Instagram, or email accounts.</strong>
+        Your logins and your business accounts stay yours.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I want to stop?</div>
+      <div class="faq-a">
+        Message us and we stop. On Standard and Pro there's no notice period and no cancellation fee.
+        We delete your lead data within 7 days of your request.
+        <strong>We'd rather earn your business every month than trap you into staying.</strong>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why start with the pilot instead of going straight to Standard?</div>
+      <div class="faq-a">
+        You shouldn't sign up for a monthly service from a company you've never worked with.
+        The pilot is designed to prove we're real, we're professional, and the system works —
+        before you commit to anything ongoing.
+        <strong>R1,500 is the cost of finding out. Most clients recover that in one booking.</strong>
+      </div>
     </div>
   </div>
 </section>
