@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Login - Glow Retrieval</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #F5B800;
+      --black: #080808;
+      --surface: #111111;
+      --border: rgba(245,184,0,0.15);
+    }
+    body {
+      background: var(--black);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .logo {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .logo-wordmark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 4px;
+      color: var(--gold);
+    }
+    .logo-sub {
+      font-size: 11px;
+      letter-spacing: 6px;
+      color: #666;
+      margin-top: 2px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 420px;
+    }
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #aaa;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    input[type="text"] {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 0.15s;
+      letter-spacing: 1px;
+    }
+    input[type="text"]:focus {
+      border-color: var(--gold);
+    }
+    input[type="text"]::placeholder {
+      color: #444;
+      letter-spacing: 0;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn:hover { background: #ffd040; }
+    .error {
+      display: none;
+      margin-top: 14px;
+      font-size: 13px;
+      color: #ff5555;
+      text-align: center;
+    }
+    .help {
+      margin-top: 28px;
+      font-size: 13px;
+      color: #555;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .help a {
+      color: var(--gold);
+      text-decoration: none;
+      opacity: 0.8;
+    }
+    .help a:hover { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <div class="logo-wordmark">GLOW</div>
+    <div class="logo-sub">RETRIEVAL</div>
+  </div>
+
+  <div class="card">
+    <h1>Client Login</h1>
+    <p class="subtitle">Enter your access token to view your recovery dashboard. Your token was included in your onboarding email.</p>
+
+    <label for="token">Access Token</label>
+    <input type="text" id="token" placeholder="e.g. abc123xyz" autocomplete="off" spellcheck="false">
+    <button class="btn" onclick="login()">Access My Dashboard</button>
+    <div class="error" id="error">Token not recognised. Check your onboarding email or contact hello@glowretrieval.com.</div>
+
+    <div class="help">
+      Don't have a token? <a href="/#pricing">Start with the pilot</a><br>
+      Need help? <a href="mailto:hello@glowretrieval.com">hello@glowretrieval.com</a>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const token = document.getElementById('token').value.trim();
+      if (!token) return;
+      const url = '/portal/' + token + '/';
+      const err = document.getElementById('error');
+      // Attempt to navigate - if the page doesn't exist, the browser will show a 404
+      // which is the correct behaviour for an invalid token on a static site
+      err.style.display = 'none';
+      window.location.href = url;
+    }
+
+    document.getElementById('token').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') login();
+    });
+  </script>
+</body>
+</html>
