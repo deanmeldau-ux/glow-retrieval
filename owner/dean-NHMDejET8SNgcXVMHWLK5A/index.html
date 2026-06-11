@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Glow Retrieval - Owner Dashboard</title>
+  <meta http-equiv="refresh" content="60">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--black:#080808;--s:#111;--s2:#1a1a1a;--s3:#222;--gold:#F5B800;--w:#fff;--grey:#999;--green:#22c55e;--amber:#f59e0b;--red:#ef4444}
+    body{background:var(--black);color:var(--w);font-family:-apple-system,'Inter',sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+    a{color:var(--gold);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{background:var(--s);border-bottom:1px solid #1f1f1f;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+    .brand{font-size:18px;font-weight:900;letter-spacing:1px;color:var(--gold)}
+    .brand span{color:var(--grey);font-weight:400;font-size:13px;margin-left:10px}
+    .refresh{font-size:12px;color:var(--grey)}
+    .container{max-width:1400px;margin:0 auto;padding:32px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
+    .grid-1{margin-bottom:32px}
+    .card{background:var(--s);border:1px solid #1f1f1f;border-radius:12px;padding:24px}
+    .card-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
+    .big-number{font-size:48px;font-weight:900;line-height:1;color:var(--w)}
+    .big-number.gold{color:var(--gold)}
+    .big-sub{font-size:13px;color:var(--grey);margin-top:4px}
+    .section-title{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+    table{width:100%;border-collapse:collapse}
+    th{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);text-align:left;padding:10px 12px;border-bottom:1px solid #1f1f1f}
+    td{padding:12px;border-bottom:1px solid #141414;font-size:14px;vertical-align:middle}
+    tr:last-child td{border-bottom:none}
+    tr:hover td{background:#0f0f0f}
+    .badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+    .badge-pilot{background:rgba(245,184,0,.12);color:var(--gold);border:1px solid rgba(245,184,0,.25)}
+    .badge-standard{background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.2)}
+    .badge-pro{background:rgba(239,68,68,.1);color:var(--red);border:1px solid rgba(239,68,68,.2)}
+    .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+    .dot-green{background:var(--green);box-shadow:0 0 6px var(--green)}
+    .dot-amber{background:var(--amber);box-shadow:0 0 6px var(--amber)}
+    .dot-red{background:var(--red);box-shadow:0 0 6px var(--red)}
+    .dot-grey{background:var(--grey)}
+    .log{background:#050505;border:1px solid #1a1a1a;border-radius:8px;padding:16px 20px;font-family:'SF Mono','Menlo',monospace;font-size:12px;line-height:1.7;max-height:340px;overflow-y:auto}
+    .log-line{color:#666}
+    .log-line.ok{color:#4ade80}
+    .log-line.err{color:var(--red)}
+    .log-line.warn{color:var(--amber)}
+    .log-line.info{color:#60a5fa}
+    .stat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #141414;font-size:14px}
+    .stat-row:last-child{border-bottom:none}
+    .stat-row .label{color:var(--grey)}
+    .stat-row .val{font-weight:700}
+    .empty{color:var(--grey);font-size:13px;text-align:center;padding:24px}
+    .green{color:var(--green)}
+    .gold{color:var(--gold)}
+    .hot{color:var(--amber)}
+    .grey{color:var(--grey);font-size:13px}
+    .small{font-size:12px}
+    @media(max-width:900px){.grid-4{grid-template-columns:1fr 1fr}.grid-2{grid-template-columns:1fr}}
+    @media(max-width:500px){.grid-4{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<header>
+  <div>
+    <span class="brand">GLOW RETRIEVAL <span>Owner Dashboard</span></span>
+  </div>
+  <div class="refresh">Auto-refreshes every 60s &nbsp;&middot;&nbsp; 2026-06-11 10:53:01 SAST</div>
+</header>
+
+<div class="container">
+
+  <div class="grid-4">
+    <div class="card">
+      <div class="card-title">Monthly Recurring Revenue</div>
+      <div class="big-number gold">R0</div>
+      <div class="big-sub">0 Standard + 0 Pro</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Active Clients</div>
+      <div class="big-number">1</div>
+      <div class="big-sub">Pilot: 1 &nbsp; Std: 0 &nbsp; Pro: 0</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Lead Pipeline</div>
+      <div class="big-number">87</div>
+      <div class="big-sub">0 contacted &nbsp; 0 hot</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Watchdog Status</div>
+      <div style="margin-top:8px;font-size:14px;font-weight:700">
+        <span class="dot dot-red"></span>
+        CHECK REQUIRED
+      </div>
+      <div class="big-sub" style="margin-top:8px">Last: 2026-06-11 10:29:26</div>
+    </div>
+  </div>
+
+  <div class="card grid-1">
+    <div class="section-title">Active Clients</div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Client</th><th>Plan</th><th>Leads</th><th>Contacted</th>
+          <th>Replies</th><th>Hot</th><th>Spent</th><th>Recovered</th>
+          <th>ROI</th><th>Updated</th><th></th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr>
+              <td><strong>Shine Aesthetics</strong></td>
+              <td><span class="badge badge-pilot">pilot</span></td>
+              <td>87</td>
+              <td>0</td>
+              <td>0</td>
+              <td class="hot">0</td>
+              <td>R1,500</td>
+              <td class="green">R0</td>
+              <td class="gold">0x</td>
+              <td class="grey">2026-06-11</td>
+              <td><a href="https://glowretrieval.com/portal/abc123xyz/" target="_blank">Portal &rarr;</a></td>
+            </tr></tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="section-title">Watchdog Log (latest)</div>
+      <div class="log"><div class="log-line info">[2026-06-11 10:52:39] Watchdog run complete</div>
+<div class="log-line">[2026-06-11 10:52:39] No new prospect emails</div>
+<div class="log-line info">[2026-06-11 10:52:36] Watchdog run started</div>
+<div class="log-line info">[2026-06-11 10:51:36] Watchdog run complete</div>
+<div class="log-line">[2026-06-11 10:51:36] No new prospect emails</div>
+<div class="log-line info">[2026-06-11 10:51:33] Watchdog run started</div>
+<div class="log-line info">[2026-06-11 10:50:33] Watchdog run complete</div>
+<div class="log-line">[2026-06-11 10:50:33] No new prospect emails</div>
+<div class="log-line info">[2026-06-11 10:50:31] Watchdog run started</div>
+<div class="log-line">[2026-06-11 10:49:57] No new prospect emails detected in INBOX</div>
+<div class="log-line info">[2026-06-11 10:49:30] Watchdog run complete</div>
+<div class="log-line">[2026-06-11 10:49:30] No new prospect emails</div>
+<div class="log-line info">[2026-06-11 10:49:28] Watchdog run started</div>
+<div class="log-line info">[2026-06-11 10:48:28] Watchdog run complete</div>
+<div class="log-line">[2026-06-11 10:48:28] No new prospect emails</div>
+<div class="log-line info">[2026-06-11 10:48:25] Watchdog run started</div>
+<div class="log-line info">[2026-06-11 10:47:25] Watchdog run complete</div>
+<div class="log-line">[2026-06-11 10:47:25] No new prospect emails</div>
+<div class="log-line info">[2026-06-11 10:47:22] Watchdog run started</div>
+<div class="log-line info">[2026-06-11 10:46:22] Watchdog run complete</div>
+<div class="log-line">[2026-06-11 10:46:22] No new prospect emails</div>
+<div class="log-line info">[2026-06-11 10:46:19] Watchdog run started</div>
+<div class="log-line info">[2026-06-11 10:45:19] Watchdog run complete</div>
+<div class="log-line">[2026-06-11 10:45:19] No new prospect emails</div>
+<div class="log-line info">[2026-06-11 10:45:17] Watchdog run started</div>
+<div class="log-line">Thu Jun 11 10:45:09 SAST 2026 - No new prospect emails found in INBOX</div>
+<div class="log-line info">[2026-06-11 10:44:17] Watchdog run complete</div>
+<div class="log-line">[2026-06-11 10:44:17] No new prospect emails</div>
+<div class="log-line info">[2026-06-11 10:44:14] Watchdog run started</div>
+<div class="log-line info">[2026-06-11 10:43:14] Watchdog run complete</div>
+<div class="log-line">[2026-06-11 10:43:14] No new prospect emails</div>
+<div class="log-line info">[2026-06-11 10:43:10] Watchdog run started</div>
+<div class="log-line info">[2026-06-11 10:42:10] Watchdog run complete</div>
+<div class="log-line">[2026-06-11 10:42:10] No new prospect emails</div>
+<div class="log-line info">[2026-06-11 10:42:07] Watchdog run started</div>
+<div class="log-line info">[2026-06-11 10:41:07] Watchdog run complete</div>
+<div class="log-line">[2026-06-11 10:41:07] No new prospect emails</div>
+<div class="log-line info">[2026-06-11 10:41:05] Watchdog run started</div>
+<div class="log-line info">[2026-06-11 10:40:04] Watchdog run complete</div>
+<div class="log-line">[2026-06-11 10:40:04] No new prospect emails</div>
+</div>
+    </div>
+    <div class="card">
+      <div class="section-title">Outreach Summary</div>
+      <div class="stat-row"><span class="label">Total prospects</span><span class="val">66</span></div>
+      <div class="stat-row"><span class="label">Contacted</span><span class="val" style="color:var(--amber)">0</span></div>
+      <div class="stat-row"><span class="label">Replied</span><span class="val green">0</span></div>
+      <div class="stat-row"><span class="label">Converted</span><span class="val gold">0</span></div>
+      <div class="stat-row"><span class="label">Not yet contacted</span><span class="val">66</span></div>
+      <div style="margin-top:20px">
+      <div class="section-title">Pipeline Totals</div>
+      <div class="stat-row"><span class="label">Leads loaded</span><span class="val">87</span></div>
+      <div class="stat-row"><span class="label">Follow-ups sent</span><span class="val">0</span></div>
+      <div class="stat-row"><span class="label">Replies received</span><span class="val green">0</span></div>
+      <div class="stat-row"><span class="label">Hot leads escalated</span><span class="val gold">0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card grid-1">
+    <div class="section-title">Prospect List (Top 20 by Score)</div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Business</th><th>Area</th><th>Type</th><th>Score</th>
+          <th>Channel</th><th>Status</th><th>Reply</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Atlantic Dermatology & Laser</strong></td>
+          <td class="grey">Sea Point</td>
+          <td>Aesthetic / Laser Clinic</td>
+          <td class="gold">5</td>
+          <td class="grey">Email</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>Natural Aesthetics Green Point</strong></td>
+          <td class="grey">Green Point</td>
+          <td>Aesthetic Clinic</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>Natural Aesthetics Tyger Valley</strong></td>
+          <td class="grey">Tyger Valley</td>
+          <td>Aesthetic Clinic</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>Dr Scott Barker Aesthetic & Wellness Clinic</strong></td>
+          <td class="grey">Sea Point</td>
+          <td>Medical Aesthetic Clinic</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>Body360 Medical Aesthetics</strong></td>
+          <td class="grey">Melkbosstrand</td>
+          <td>Medical Aesthetic Clinic</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>House of Laser CPT</strong></td>
+          <td class="grey">Cape Town City</td>
+          <td>Laser Hair Removal Studio</td>
+          <td class="gold">5</td>
+          <td class="grey">Instagram</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>Laser Clinic Cape Town</strong></td>
+          <td class="grey">Cape Town</td>
+          <td>Laser Hair Removal Clinic</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>Excentric Hair Artists Kloof St</strong></td>
+          <td class="grey">Gardens</td>
+          <td>Hair Salon</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>Excentric Hair Artists Sea Point</strong></td>
+          <td class="grey">Sea Point</td>
+          <td>Hair Salon</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>Dynasty Hair and Beauty</strong></td>
+          <td class="grey">Woodstock</td>
+          <td>Hair Salon</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>Just Style Me Hair Studio</strong></td>
+          <td class="grey">Melkbosstrand</td>
+          <td>Hair Salon</td>
+          <td class="gold">5</td>
+          <td class="grey">Instagram</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>blowdryco</strong></td>
+          <td class="grey">Cape Town</td>
+          <td>Blow Dry Bar</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>OptiSmile Dental</strong></td>
+          <td class="grey">De Waterkant</td>
+          <td>Dental Practice</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>Floss Dental</strong></td>
+          <td class="grey">Cape Town</td>
+          <td>Dental Practice</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>JJS Dentistry Cape Town</strong></td>
+          <td class="grey">V&A Waterfront</td>
+          <td>Cosmetic Dental Practice</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>Fit Panda Studio</strong></td>
+          <td class="grey">Claremont</td>
+          <td>Pilates / Barre Studio</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>MoveOn 89</strong></td>
+          <td class="grey">Kloof Street</td>
+          <td>Pilates / Physio Studio</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>Horizen Gym</strong></td>
+          <td class="grey">Sea Point</td>
+          <td>Boutique Strength Gym</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>BUC Fitness Club</strong></td>
+          <td class="grey">Atlantic Seaboard</td>
+          <td>Boutique Gym / Wellness</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr>
+        <tr>
+          <td><strong>SWEAT 1000 Sea Point</strong></td>
+          <td class="grey">Sea Point</td>
+          <td>Boutique Fitness Studio</td>
+          <td class="gold">5</td>
+          <td class="grey">WhatsApp</td>
+          <td style="color:#666">not_contacted</td>
+          <td class="grey small"></td>
+        </tr></tbody>
+    </table>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
