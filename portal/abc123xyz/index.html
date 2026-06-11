@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glow Retrieval - Client Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #080808;
+      --black-2: #111111;
+      --black-3: #1a1a1a;
+      --black-4: #242424;
+      --gold: #F5B800;
+      --gold-dim: #c99800;
+      --gold-faint: rgba(245, 184, 0, 0.08);
+      --white: #FFFFFF;
+      --grey-light: #e0e0e0;
+      --grey-mid: #888888;
+      --grey-dark: #333333;
+      --green: #22c55e;
+      --radius: 8px;
+      --radius-lg: 12px;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ---- HEADER ---- */
+    .site-header {
+      background: var(--black-2);
+      border-bottom: 1px solid var(--grey-dark);
+      padding: 0 24px;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .header-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .wordmark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .dashboard-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey-mid);
+    }
+
+    .header-client {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .client-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .plan-badge {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .plan-badge.pilot {
+      background: rgba(245, 184, 0, 0.15);
+      color: var(--gold);
+      border: 1px solid rgba(245, 184, 0, 0.35);
+    }
+
+    .plan-badge.standard {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .plan-badge.pro {
+      background: linear-gradient(135deg, rgba(245, 184, 0, 0.2), rgba(245, 184, 0, 0.05));
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+
+    /* ---- MAIN CONTENT ---- */
+    .main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    /* ---- SECTION HEADINGS ---- */
+    .section-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--grey-dark);
+    }
+
+    /* ---- STAT CARDS ---- */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--black-3);
+      border: 1px solid var(--grey-dark);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: border-color 0.2s;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(245, 184, 0, 0.3);
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey-mid);
+    }
+
+    .stat-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.6rem;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .stat-card.highlight .stat-value {
+      color: var(--gold);
+    }
+
+    /* ---- RECOVERY SUMMARY ---- */
+    .recovery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .recovery-card {
+      background: var(--black-3);
+      border: 1px solid var(--grey-dark);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .recovery-card.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .recovery-card-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey-mid);
+      margin-bottom: 8px;
+    }
+
+    .recovery-card-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .recovery-card-value.gold {
+      color: var(--gold);
+    }
+
+    .recovery-card-value.green {
+      color: var(--green);
+    }
+
+    .recovery-note {
+      font-size: 0.72rem;
+      color: var(--grey-mid);
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-item .label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey-mid);
+    }
+
+    .meta-item .value {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    /* ---- TABLE ---- */
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--grey-dark);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    thead tr {
+      background: var(--black-4);
+    }
+
+    thead th {
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey-mid);
+      border-bottom: 1px solid var(--grey-dark);
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #1e1e1e;
+      transition: background 0.15s;
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: var(--black-3);
+    }
+
+    tbody td {
+      padding: 14px 20px;
+      color: var(--grey-light);
+      vertical-align: middle;
+    }
+
+    .status-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-dot::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--grey-mid);
+      flex-shrink: 0;
+    }
+
+    .status-dot.pending::before { background: #555; }
+    .status-dot.touch1::before { background: #3b82f6; }
+    .status-dot.touch2::before { background: #8b5cf6; }
+    .status-dot.replied::before { background: var(--gold); }
+    .status-dot.hot::before { background: var(--green); }
+    .status-dot.closed::before { background: #ef4444; }
+
+    .count-pill {
+      display: inline-block;
+      background: var(--black-4);
+      border: 1px solid var(--grey-dark);
+      border-radius: 100px;
+      padding: 2px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--white);
+      min-width: 48px;
+      text-align: center;
+    }
+
+    .download-link {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border: 1px solid rgba(245, 184, 0, 0.4);
+      border-radius: var(--radius);
+      transition: background 0.15s, border-color 0.15s;
+      display: inline-block;
+    }
+
+    .download-link:hover {
+      background: var(--gold-faint);
+      border-color: var(--gold);
+    }
+
+    .no-reports {
+      padding: 32px 20px;
+      text-align: center;
+      color: var(--grey-mid);
+      font-size: 0.88rem;
+    }
+
+    /* ---- CTA CARD ---- */
+    .cta-card {
+      background: var(--gold-faint);
+      border: 1px solid rgba(245, 184, 0, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .cta-card-text h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .cta-card-text p {
+      font-size: 0.9rem;
+      color: var(--grey-light);
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      white-space: nowrap;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .btn-gold:hover {
+      background: #ffc61a;
+      transform: translateY(-1px);
+    }
+
+    .btn-gold:active {
+      transform: translateY(0);
+    }
+
+    /* ---- ACCOUNT SECTION ---- */
+    .account-card {
+      background: var(--black-3);
+      border: 1px solid var(--grey-dark);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .account-details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .account-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .account-row .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-mid);
+      min-width: 130px;
+    }
+
+    .account-row .value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .account-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .btn-outline-gold {
+      display: inline-block;
+      background: transparent;
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 11px 24px;
+      border: 1px solid var(--gold);
+      border-radius: var(--radius);
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .btn-outline-gold:hover {
+      background: var(--gold-faint);
+    }
+
+    .cancel-link {
+      font-size: 0.78rem;
+      color: var(--grey-mid);
+      text-decoration: none;
+      text-align: right;
+      display: block;
+    }
+
+    .cancel-link:hover {
+      color: #ef4444;
+      text-decoration: underline;
+    }
+
+    /* ---- FOOTER ---- */
+    .site-footer {
+      background: var(--black-2);
+      border-top: 1px solid var(--grey-dark);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--grey-mid);
+    }
+
+    .site-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---- DIVIDER ---- */
+    .section {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .recovery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .recovery-card.full-width {
+        grid-column: auto;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-client {
+        align-items: flex-start;
+      }
+
+      .cta-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .account-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .account-actions {
+        align-items: flex-start;
+      }
+
+      .cancel-link {
+        text-align: left;
+      }
+
+      .meta-row {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat-value {
+        font-size: 2rem;
+      }
+
+      .main {
+        padding: 28px 16px 60px;
+        gap: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <a class="wordmark" href="https://glowretrieval.com">Glow Retrieval</a>
+        <span class="dashboard-label">Client Dashboard</span>
+      </div>
+      <div class="header-client">
+        <span class="client-name">Shine Aesthetics</span>
+        <span class="plan-badge pilot">Pilot</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- STATS CARDS -->
+    <section class="section">
+      <h2 class="section-heading">Campaign Overview</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-label">Leads Loaded</span>
+          <span class="stat-value">87</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Contacted</span>
+          <span class="stat-value">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Replies Received</span>
+          <span class="stat-value">0</span>
+        </div>
+        <div class="stat-card highlight">
+          <span class="stat-label">Hot Leads</span>
+          <span class="stat-value">0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECOVERY SUMMARY -->
+    <section class="section">
+      <h2 class="section-heading">Recovery Summary</h2>
+      <div class="recovery-grid">
+        <div class="recovery-card">
+          <div class="recovery-card-label">Amount Spent</div>
+          <div class="recovery-card-value">R1,500</div>
+        </div>
+        <div class="recovery-card">
+          <div class="recovery-card-label">Estimated Value Recovered</div>
+          <div class="recovery-card-value gold">R0</div>
+          <div class="recovery-note">based on leads that responded positively</div>
+        </div>
+        <div class="recovery-card">
+          <div class="recovery-card-label">ROI</div>
+          <div class="recovery-card-value green">0x</div>
+        </div>
+        <div class="recovery-card">
+          <div class="recovery-card-label">Days Active</div>
+          <div class="recovery-card-value">0</div>
+        </div>
+        <div class="recovery-card full-width">
+          <div class="meta-row">
+            <div class="meta-item">
+              <span class="label">Last Updated</span>
+              <span class="value">2026-06-11</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEAD STATUS BREAKDOWN -->
+    <section class="section">
+      <h2 class="section-heading">Lead Status Breakdown</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="status-dot pending">Pending</span></td>
+              <td><span class="count-pill">87</span></td>
+            </tr>
+            <tr>
+              <td><span class="status-dot touch1">Touch 1 Sent</span></td>
+              <td><span class="count-pill">0</span></td>
+            </tr>
+            <tr>
+              <td><span class="status-dot touch2">Touch 2 Sent</span></td>
+              <td><span class="count-pill">0</span></td>
+            </tr>
+            <tr>
+              <td><span class="status-dot replied">Replied</span></td>
+              <td><span class="count-pill">0</span></td>
+            </tr>
+            <tr>
+              <td><span class="status-dot hot">Hot</span></td>
+              <td><span class="count-pill">0</span></td>
+            </tr>
+            <tr>
+              <td><span class="status-dot closed">Closed</span></td>
+              <td><span class="count-pill">0</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ADD MORE LEADS -->
+    <section class="section">
+      <h2 class="section-heading">Add More Leads</h2>
+      <div class="cta-card">
+        <div class="cta-card-text">
+          <h3>Got more old enquiries to recover?</h3>
+          <p>Send your list to hello@glowretrieval.com - WhatsApp exports, spreadsheets, anything works. We'll clean it up and add it to your campaign within 24 hours.</p>
+        </div>
+        <a class="btn-gold" href="mailto:hello@glowretrieval.com?subject=New leads for Shine Aesthetics&body=Hi Ryan, I'd like to add more leads to my recovery list.">Email Your Leads</a>
+      </div>
+    </section>
+
+    <!-- WEEKLY REPORTS -->
+    <section class="section">
+      <h2 class="section-heading">Your Reports</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th>Date</th>
+              <th>Leads Contacted</th>
+              <th>Replies</th>
+              <th>Hot Leads</th>
+              <th>Download</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+        <div class="no-reports">Your first weekly report will appear here after your campaign launches.</div>
+      </div>
+    </section>
+
+    <!-- ACCOUNT & PLAN -->
+    <section class="section">
+      <h2 class="section-heading">Account &amp; Plan</h2>
+      <div class="account-card">
+        <div class="account-details">
+          <div class="account-row">
+            <span class="label">Current Plan</span>
+            <span class="value">Pilot</span>
+          </div>
+          <div class="account-row">
+            <span class="label">Next Billing</span>
+            <span class="value">N/A - Pilot</span>
+          </div>
+        </div>
+        <div class="account-actions">
+          <a class="btn-outline-gold" href="https://glowretrieval.com/#pricing">Upgrade Plan</a>
+          <a class="cancel-link" href="mailto:hello@glowretrieval.com?subject=Cancel account - Shine Aesthetics&body=Hi Ryan, I'd like to cancel my Glow Retrieval account.">Cancel account</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>Questions? <a href="mailto:hello@glowretrieval.com">hello@glowretrieval.com</a> | <a href="https://www.glowretrieval.com">www.glowretrieval.com</a></p>
+  </footer>
+
+</body>
+</html>
