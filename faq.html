@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - Glow Retrieval</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --gold: #F5B800; --black: #080808; --white: #f0f0f0; --grey: #888; }
+    body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 48px; border-bottom: 1px solid #1a1a1a; }
+    .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; color: var(--gold); text-decoration: none; }
+    .back-link { font-size: 14px; color: #666; text-decoration: none; }
+    .back-link:hover { color: var(--white); }
+    main { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
+    h1 { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--white); margin-bottom: 8px; letter-spacing: 1px; }
+    .subtitle { font-size: 16px; color: var(--grey); margin-bottom: 56px; }
+    .section-label { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 3px; color: var(--gold); margin: 48px 0 20px; text-transform: uppercase; }
+    .faq-item { border-bottom: 1px solid #1a1a1a; padding: 0; }
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 22px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-question:hover { color: var(--gold); }
+    .faq-icon { font-size: 20px; color: var(--gold); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-answer { display: none; padding: 0 0 22px; color: #aaaaaa; font-size: 15px; line-height: 1.75; }
+    .faq-answer.open { display: block; }
+    .faq-answer p { margin-bottom: 12px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    .faq-answer ul { padding-left: 20px; margin-bottom: 12px; }
+    .faq-answer ul li { margin-bottom: 6px; }
+    .faq-answer strong { color: var(--white); }
+    .faq-answer a { color: var(--gold); }
+    .cta-block { background: #0d0d0d; border: 1px solid #1a3a1a; border-radius: 12px; padding: 32px; margin-top: 56px; text-align: center; }
+    .cta-block p { color: #aaaaaa; margin-bottom: 20px; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: #1a1a1a;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    footer { text-align: center; padding: 24px; font-size: 13px; color: #444; border-top: 1px solid #141414; }
+    footer a { color: #555; text-decoration: none; }
+    @media (max-width: 640px) { nav { padding: 14px 16px; } main { padding: 40px 16px 60px; } h1 { font-size: 36px; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo-text" href="/">GLOW RETRIEVAL</a>
+  <a class="back-link" href="/">Back to site</a>
+</nav>
+
+<main>
+  <h1>Frequently Asked Questions</h1>
+  <p class="subtitle">Everything you need to know before getting started.</p>
+
+  <div class="section-label">The Service</div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      What exactly does Glow Retrieval do?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>We follow up with old enquiries that went quiet. People who asked about your services, got a quote, and then never booked. You provide the list, we build the follow-up sequences, get your approval, send them, and report back weekly on what came back.</p>
+      <p>Nothing goes out without your sign-off. You never have to speak to leads yourself - when one shows strong interest, we alert you directly so you can close the booking.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      What industries do you work with?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Any service business that generates enquiries. We currently work with:</p>
+      <ul>
+        <li>Aesthetic clinics, dermatology, and laser treatment providers</li>
+        <li>Hair salons and blow dry bars</li>
+        <li>Dental practices</li>
+        <li>Fitness studios and personal trainers</li>
+        <li>Real estate agencies</li>
+        <li>Trades and home services</li>
+        <li>Tutoring and education</li>
+      </ul>
+      <p>If your business gets enquiries that sometimes go cold, we can work with you.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      How old can the leads be?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Most clients see the best results from leads that are 30 days to 12 months old. Under 30 days they often haven't gone fully cold yet. Over 12 months the intent is usually too stale to recover reliably.</p>
+      <p>That said, we have seen responses from leads that are 18 months old. If you have older data, it is worth submitting - we will work through it and report what comes back.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      Do you need access to our social media, CRM, or booking system?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>No. We do not log into any of your accounts. We only need the contact details of the leads (name, phone number, and/or email) - information they already gave you when they enquired. You export that list and send it to us. That is the only access we need.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Getting Started</div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      What format does my lead list need to be in?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Any format works. We can process:</p>
+      <ul>
+        <li>WhatsApp chat exports</li>
+        <li>Excel or Google Sheets</li>
+        <li>CSV files</li>
+        <li>A plain list of names and numbers in an email</li>
+        <li>Screenshot exports from booking tools</li>
+      </ul>
+      <p>Just include the name, phone number or email address, and any context you have on what they enquired about. We will clean and organise it on our end.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      How quickly can we get started after payment?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>As soon as you send us your lead list, we draft the follow-up templates and return them to you within 24 hours. You review them - this takes about 10 minutes - and reply with your approval. Sequences start within 48 hours of that approval.</p>
+      <p>The only delay is the time it takes you to send the list and approve the templates. If you do both on the same day we receive payment, we can be live in 48 hours.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      Can I make changes to the templates before they go out?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Yes. Template review is part of the process. When we send you the drafts, reply with any changes and we will revise them before sending anything. We ask for one round of revisions at the approval stage - if you want changes after that, we can accommodate them, but it may pause the sequence briefly while we get fresh approval.</p>
+    </div>
+  </div>
+
+  <div class="section-label">During the Service</div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      What happens when a lead replies?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>If a lead replies with interest - asks a question, requests a quote, or shows any intent to book - we escalate it to you immediately by email. You get their name, contact details, and the message they sent. From that point, you handle the conversation directly. We do not close bookings on your behalf.</p>
+      <p>If a lead replies to opt out, we remove them immediately and you are notified in your next weekly report.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      What does the weekly report include?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Every Friday you receive a report showing:</p>
+      <ul>
+        <li>Total leads in your sequence</li>
+        <li>How many have been contacted</li>
+        <li>How many have replied</li>
+        <li>How many have been escalated to you as hot leads</li>
+        <li>How many have been marked inactive (no response after full sequence)</li>
+        <li>Opt-outs recorded that week</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      How does the follow-up sequence work?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Each lead receives a maximum of two messages:</p>
+      <ul>
+        <li><strong>Day 0:</strong> The initial recovery message, sent on a weekday between 09:00 and 16:00.</li>
+        <li><strong>Day 5:</strong> A single follow-up if there has been no reply.</li>
+        <li><strong>Day 10:</strong> If still no reply, the lead is marked inactive and no further contact is made.</li>
+      </ul>
+      <p>We never send more than two messages to any lead. We never contact leads on weekends.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      Is this POPIA compliant?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Yes, with your cooperation. Under POPIA, follow-up contact is lawful when the person made an enquiry via an opt-in or public channel (website form, WhatsApp message, walk-in, etc.) and has not asked to be removed.</p>
+      <p>By submitting a lead list to us, you confirm that each contact made an enquiry via such a channel. We handle opt-out requests immediately and permanently. We do not contact any lead who has asked to stop receiving messages. See our <a href="/privacy.html">Privacy Policy</a> for full details.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Pricing and Refunds</div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      What are the pricing tiers?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p><strong>Pilot - R1,500 once-off:</strong> 14 days, up to 100 leads, one source. Best for businesses who want to prove the system works before committing monthly. Full refund if we don't deliver by Day 14.</p>
+      <p><strong>Standard - R2,500/month:</strong> Up to 300 leads per month, all sources, weekly reports. No lock-in, cancel any time.</p>
+      <p><strong>Pro - R4,500/month:</strong> Unlimited leads, multiple locations or brands, monthly pipeline review. Full SLA with 4-hour escalation response commitment.</p>
+      <p>No setup fees on any tier.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      What does the pilot guarantee actually mean?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>It means we deliver the complete recovery system within 14 days - templates approved, messages sent, and a weekly report in your inbox - or you pay nothing.</p>
+      <p>Note: the guarantee covers our delivery of the service, not the number of leads who respond. Lead response depends on the quality and age of your list, which is outside our control. What we guarantee is that the system runs as described.</p>
+      <p>If the delay is caused by you not providing a lead list or not approving templates, the 14-day clock does not run until those things are done.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      How do I cancel or get a refund?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Email <a href="mailto:hello@glowretrieval.com">hello@glowretrieval.com</a> and we will handle it. There is no cancellation form and no notice period. See our <a href="/refund.html">Refund Policy</a> for the full breakdown of what is covered and when refunds are initiated.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      Can I upgrade from the Pilot to Standard or Pro?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Yes. Email us once your pilot is complete and we will move you to the appropriate tier. There is no upgrade fee. Your lead history and any approved templates carry over.</p>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <p>Still have a question not covered here?</p>
+    <a class="cta-btn" href="mailto:hello@glowretrieval.com">Email us</a>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 Glow Retrieval &nbsp;|&nbsp;
+  <a href="/terms.html">Terms</a> &nbsp;|&nbsp;
+  <a href="/privacy.html">Privacy</a> &nbsp;|&nbsp;
+  <a href="/refund.html">Refund Policy</a> &nbsp;|&nbsp;
+  <a href="/faq.html">FAQ</a>
+</footer>
+
+<script>
+  function toggle(btn) {
+    const answer = btn.nextElementSibling;
+    const icon = btn.querySelector('.faq-icon');
+    const isOpen = answer.classList.contains('open');
+    answer.classList.toggle('open', !isOpen);
+    icon.textContent = isOpen ? '+' : '-';
+    icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(0deg)';
+  }
+</script>
+
+</body>
+</html>
