@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glow Retrieval - Client Onboarding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #080808;
+      --surface: #111111;
+      --surface2: #1a1a1a;
+      --gold: #F5B800;
+      --gold-dim: #c99900;
+      --white: #ffffff;
+      --grey: #999999;
+      --danger: #ff4444;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #1f1f1f;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .logo span { color: var(--white); }
+
+    /* ONBOARDING CONTAINER */
+    .onboarding-wrapper {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .form-header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    .form-header p {
+      color: var(--grey);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .onboarding-form {
+      background: var(--surface);
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group select {
+      width: 100%;
+      background: var(--black);
+      border: 1px solid #333;
+      color: var(--white);
+      padding: 14px 16px;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: #ccc;
+      cursor: pointer;
+    }
+    .checkbox-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      padding: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .submit-btn:hover {
+      background: #ffd040;
+      transform: translateY(-1px);
+    }
+    .submit-btn:disabled {
+      background: #555;
+      color: #222;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .secure-note {
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .secure-note svg { width: 14px; height: 14px; fill: #666; }
+
+    /* LOADER */
+    .loader {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(245,184,0,0.3);
+      border-radius: 50%;
+      border-top-color: var(--gold);
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 640px) {
+      .onboarding-form { padding: 24px; }
+      .form-header h1 { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">GLOW<span>RETRIEVAL</span></a>
+  </nav>
+
+  <div class="onboarding-wrapper">
+    <div class="form-header">
+      <h1>Let's Get Started</h1>
+      <p>Step 1 of 2: Quick details to set up your pilot.</p>
+    </div>
+
+    <div class="onboarding-form">
+      <form id="onboardingForm">
+        
+        <div class="form-group">
+          <label>Business Name</label>
+          <input type="text" id="bizName" placeholder="e.g. Apex Clinic" required>
+        </div>
+
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="contactName" placeholder="e.g. Sarah Jones" required>
+        </div>
+
+        <div class="form-group">
+          <label>WhatsApp Number</label>
+          <input type="tel" id="contactPhone" placeholder="e.g. 072 123 4567" required>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="contactEmail" placeholder="sarah@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>Where do your old enquiries usually sit? (Tick all that apply)</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="source" value="WhatsApp"> WhatsApp Chats
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="source" value="Email"> Email Inbox
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="source" value="Instagram"> Instagram DMs
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="source" value="Web"> Website Forms
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" id="submitBtn" class="submit-btn">Continue to Secure Payment &rarr;</button>
+        
+        <div id="loader" class="loader">
+          <div class="spinner"></div> Configuring your pilot...
+        </div>
+
+        <div class="secure-note">
+          <svg viewBox="0 0 24 24"><path d="M12 2C9.243 2 7 4.243 7 7v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10v8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z"/></svg>
+          Payment processed securely by Stripe
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('onboardingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const btn = document.getElementById('submitBtn');
+      const loader = document.getElementById('loader');
+      
+      btn.style.display = 'none';
+      loader.style.display = 'block';
+
+      // Capture form data here if an API endpoint exists.
+      // For now, we simulate a brief processing delay before sending them to checkout.
+      
+      setTimeout(() => {
+        window.location.href = "https://buy.stripe.com/eVqaEX04G0rVgz8clHfEk05";
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>
