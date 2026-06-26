@@ -4,12 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FAQ - Glow Retrieval</title>
+  <meta name="description" content="Answers for Cape Town service providers about exclusive leads, suburb exclusivity, pricing and how Glow Retrieval works.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --gold: #F5B800; --black: #080808; --white: #f0f0f0; --grey: #888; }
-    body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; -webkit-text-size-adjust: 100%; }
+    img { max-width: 100%; height: auto; }
     nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 48px; border-bottom: 1px solid #1a1a1a; }
     .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; color: var(--gold); text-decoration: none; }
     .back-link { font-size: 14px; color: #666; text-decoration: none; }
@@ -20,23 +23,12 @@
     .section-label { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 3px; color: var(--gold); margin: 48px 0 20px; text-transform: uppercase; }
     .faq-item { border-bottom: 1px solid #1a1a1a; padding: 0; }
     .faq-question {
-      width: 100%;
-      text-align: left;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 22px 0;
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--white);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
+      width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+      padding: 22px 0; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+      color: var(--white); display: flex; justify-content: space-between; align-items: center; gap: 16px;
     }
     .faq-question:hover { color: var(--gold); }
-    .faq-icon { font-size: 20px; color: var(--gold); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-icon { font-size: 20px; color: var(--gold); flex-shrink: 0; }
     .faq-answer { display: none; padding: 0 0 22px; color: #aaaaaa; font-size: 15px; line-height: 1.75; }
     .faq-answer.open { display: block; }
     .faq-answer p { margin-bottom: 12px; }
@@ -48,16 +40,9 @@
     .cta-block { background: #0d0d0d; border: 1px solid #1a3a1a; border-radius: 12px; padding: 32px; margin-top: 56px; text-align: center; }
     .cta-block p { color: #aaaaaa; margin-bottom: 20px; }
     .cta-btn {
-      display: inline-block;
-      background: var(--gold);
-      color: #1a1a1a;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      padding: 14px 32px;
-      border-radius: 6px;
-      text-decoration: none;
-      letter-spacing: 0.5px;
+      display: inline-block; background: var(--gold); color: #1a1a1a;
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+      padding: 14px 32px; border-radius: 6px; text-decoration: none; letter-spacing: 0.5px;
     }
     footer { text-align: center; padding: 24px; font-size: 13px; color: #444; border-top: 1px solid #141414; }
     footer a { color: #555; text-decoration: none; }
@@ -67,227 +52,139 @@
 <body>
 
 <nav>
-  <a class="logo-text" href="/">GLOW RETRIEVAL</a>
-  <a class="back-link" href="/">Back to site</a>
+  <a class="logo-text" href="index.html">GLOW RETRIEVAL</a>
+  <a class="back-link" href="index.html">Back to site</a>
 </nav>
 
 <main>
   <h1>Frequently Asked Questions</h1>
-  <p class="subtitle">Everything you need to know before getting started.</p>
+  <p class="subtitle">For Cape Town service providers thinking about exclusive leads.</p>
 
-  <div class="section-label">The Service</div>
+  <div class="section-label">The Model</div>
 
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      What exactly does Glow Retrieval do?
-      <span class="faq-icon">+</span>
-    </button>
+    <button class="faq-question" onclick="toggle(this)">What exactly does Glow Retrieval do? <span class="faq-icon">+</span></button>
     <div class="faq-answer">
-      <p>We follow up with old enquiries that went quiet. People who asked about your services, got a quote, and then never booked. You provide the list, we build the follow-up sequences, get your approval, send them, and report back weekly on what came back.</p>
-      <p>Nothing goes out without your sign-off. You never have to speak to leads yourself - when one shows strong interest, we alert you directly so you can close the booking.</p>
+      <p>We are a Cape Town lead generation company. We build and own niche local service websites, rank them on Google with content and SEO, and capture homeowner enquiries on our own forms. We then send each enquiry to one local provider as an exclusive lead.</p>
+      <p>You do not build or run anything. You receive ready enquiries from people who are actively searching, contact them, and keep the full value of any job you win.</p>
     </div>
   </div>
 
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      What industries do you work with?
-      <span class="faq-icon">+</span>
-    </button>
+    <button class="faq-question" onclick="toggle(this)">Are the leads really exclusive, or shared like other platforms? <span class="faq-icon">+</span></button>
     <div class="faq-answer">
-      <p>Any service business that generates enquiries. We currently work with:</p>
+      <p>Exclusive. Each enquiry is single routed to one provider only. We do not sell the same lead to several contractors. This is the core difference between us and shared lead platforms like Procompare, Snupit or LocalPros, where one enquiry is sold to up to five or six companies and you end up competing on price the moment you call.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">What does suburb exclusivity mean? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">
+      <p>On the monthly plan you can take a suburb. Every qualified enquiry that comes in from that suburb is routed to you and only you, for as long as you hold it. No rival provider can buy into your suburb while it is yours. It is first come, first served, which is why it is worth claiming your areas early.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">What do I have to hand over to you? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">
+      <p>Nothing. We own the website, the traffic, the form and the tracking. You do not give us a customer database, any logins, or your WhatsApp number for us to run. We simply send you the enquiries. Your business, your systems and your customers stay entirely yours.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Leads and Quality</div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">Where do the leads come from? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">
+      <p>From real homeowners searching Google for a service and filling in the enquiry form on one of our niche sites. For damp proofing that site is DryCape. These are not scraped lists or cold contacts. They are people with a current problem (a leaking roof, rising damp, mould) who asked for help today.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">How fast do I get a lead after a homeowner enquires? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">
+      <p>Usually within minutes. A new enquiry in your suburb is sent straight to your WhatsApp or email. Speed matters, especially with urgent winter damp and leak jobs, so we route fast and you call while the homeowner is still looking.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">Do you guarantee I will win the job? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">
+      <p>No, and anyone who promises that is not being straight with you. We guarantee the lead is genuine and exclusive to you. Whether you win the work depends on your quote, your response time and your service. What we remove is the part that kills conversion on shared platforms: you are not racing four other quotes.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">What if a lead turns out to be junk (wrong number, out of area)? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">
+      <p>On pay per lead, if an enquiry is clearly not genuine (a fake or unreachable contact, spam, or plainly outside your service area) tell us and we credit it back. We want you buying real work, not noise. See our <a href="refund.html">Lead Credit Policy</a> for exactly what qualifies.</p>
+    </div>
+  </div>
+
+  <div class="section-label">Pricing and Billing</div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">How much does it cost? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">
+      <p>Two ways to pay:</p>
       <ul>
-        <li>Aesthetic clinics, dermatology, and laser treatment providers</li>
-        <li>Hair salons and blow dry bars</li>
-        <li>Dental practices</li>
-        <li>Fitness studios and personal trainers</li>
-        <li>Real estate agencies</li>
-        <li>Trades and home services</li>
-        <li>Tutoring and education</li>
+        <li><strong>Pay per lead:</strong> exclusive leads typically R150 to R400 each, bought as prepaid credits. You only pay when a real enquiry lands.</li>
+        <li><strong>Suburb exclusive:</strong> a flat monthly fee, typically R1,500 to R3,000 per suburb, and every qualified enquiry from that suburb is yours.</li>
       </ul>
-      <p>If your business gets enquiries that sometimes go cold, we can work with you.</p>
+      <p>The exact figure depends on the suburb's demand and the typical job value, so we confirm your price in writing before you commit. There are no setup fees and no charge to build or run the site.</p>
     </div>
   </div>
 
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      How old can the leads be?
-      <span class="faq-icon">+</span>
-    </button>
+    <button class="faq-question" onclick="toggle(this)">Is there a contract or lock-in? <span class="faq-icon">+</span></button>
     <div class="faq-answer">
-      <p>Most clients see the best results from leads that are 30 days to 12 months old. Under 30 days they often haven't gone fully cold yet. Over 12 months the intent is usually too stale to recover reliably.</p>
-      <p>That said, we have seen responses from leads that are 18 months old. If you have older data, it is worth submitting - we will work through it and report what comes back.</p>
+      <p>No lock-in. The monthly suburb plan can be cancelled any time with no notice period. Prepaid lead credits simply run down as leads arrive, and any unused credit stays on your account. We keep your business by sending good leads, not by trapping you in a term.</p>
     </div>
   </div>
 
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      Do you need access to our social media, CRM, or booking system?
-      <span class="faq-icon">+</span>
-    </button>
+    <button class="faq-question" onclick="toggle(this)">When and how do I pay? <span class="faq-icon">+</span></button>
     <div class="faq-answer">
-      <p>No. We do not log into any of your accounts. We only need the contact details of the leads (name, phone number, and/or email) - information they already gave you when they enquired. You export that list and send it to us. That is the only access we need.</p>
+      <p>Up front, by EFT or a secure payment link. On pay per lead you top up credits before leads flow. On a suburb retainer you pay monthly in advance. Paying up front keeps it simple for both sides and means we are never chasing invoices.</p>
     </div>
   </div>
 
   <div class="section-label">Getting Started</div>
 
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      What format does my lead list need to be in?
-      <span class="faq-icon">+</span>
-    </button>
+    <button class="faq-question" onclick="toggle(this)">How do I sign up? <span class="faq-icon">+</span></button>
     <div class="faq-answer">
-      <p>Any format works. We can process:</p>
-      <ul>
-        <li>WhatsApp chat exports</li>
-        <li>Excel or Google Sheets</li>
-        <li>CSV files</li>
-        <li>A plain list of names and numbers in an email</li>
-        <li>Screenshot exports from booking tools</li>
-      </ul>
-      <p>Just include the name, phone number or email address, and any context you have on what they enquired about. We will clean and organise it on our end.</p>
+      <p>Fill in the short <a href="onboarding.html">provider application</a> with your trade and the suburbs you cover. We check availability, confirm your pricing, and get you set up to receive leads. The whole thing takes a couple of minutes and no payment is taken until your suburb and price are confirmed.</p>
     </div>
   </div>
 
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      How quickly can we get started after payment?
-      <span class="faq-icon">+</span>
-    </button>
+    <button class="faq-question" onclick="toggle(this)">Do you vet providers? <span class="faq-icon">+</span></button>
     <div class="faq-answer">
-      <p>As soon as you send us your lead list, we draft the follow-up templates and return them to you within 24 hours. You review them - this takes about 10 minutes - and reply with your approval. Sequences start within 48 hours of that approval.</p>
-      <p>The only delay is the time it takes you to send the list and approve the templates. If you do both on the same day we receive payment, we can be live in 48 hours.</p>
+      <p>Yes. Because homeowners trust the niche site to connect them with a real specialist, we do a basic check before onboarding (how long you have been trading, that you are a genuine operating business, and your service area). We are building a reputation too, so we are selective about who receives the leads.</p>
     </div>
   </div>
 
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      Can I make changes to the templates before they go out?
-      <span class="faq-icon">+</span>
-    </button>
+    <button class="faq-question" onclick="toggle(this)">Which trades is this available for? <span class="faq-icon">+</span></button>
     <div class="faq-answer">
-      <p>Yes. Template review is part of the process. When we send you the drafts, reply with any changes and we will revise them before sending anything. We ask for one round of revisions at the approval stage - if you want changes after that, we can accommodate them, but it may pause the sequence briefly while we get fresh approval.</p>
-    </div>
-  </div>
-
-  <div class="section-label">During the Service</div>
-
-  <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      What happens when a lead replies?
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-answer">
-      <p>If a lead replies with interest - asks a question, requests a quote, or shows any intent to book - we escalate it to you immediately by email. You get their name, contact details, and the message they sent. From that point, you handle the conversation directly. We do not close bookings on your behalf.</p>
-      <p>If a lead replies to opt out, we remove them immediately and you are notified in your next weekly report.</p>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      What does the weekly report include?
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-answer">
-      <p>Every Friday you receive a report showing:</p>
-      <ul>
-        <li>Total leads in your sequence</li>
-        <li>How many have been contacted</li>
-        <li>How many have replied</li>
-        <li>How many have been escalated to you as hot leads</li>
-        <li>How many have been marked inactive (no response after full sequence)</li>
-        <li>Opt-outs recorded that week</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      How does the follow-up sequence work?
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-answer">
-      <p>Each lead receives a maximum of two messages:</p>
-      <ul>
-        <li><strong>Day 0:</strong> The initial recovery message, sent on a weekday between 09:00 and 16:00.</li>
-        <li><strong>Day 5:</strong> A single follow-up if there has been no reply.</li>
-        <li><strong>Day 10:</strong> If still no reply, the lead is marked inactive and no further contact is made.</li>
-      </ul>
-      <p>We never send more than two messages to any lead. We never contact leads on weekends.</p>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      Is this POPIA compliant?
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-answer">
-      <p>Yes, with your cooperation. Under POPIA, follow-up contact is lawful when the person made an enquiry via an opt-in or public channel (website form, WhatsApp message, walk-in, etc.) and has not asked to be removed.</p>
-      <p>By submitting a lead list to us, you confirm that each contact made an enquiry via such a channel. We handle opt-out requests immediately and permanently. We do not contact any lead who has asked to stop receiving messages. See our <a href="/privacy.html">Privacy Policy</a> for full details.</p>
-    </div>
-  </div>
-
-  <div class="section-label">Pricing and Refunds</div>
-
-  <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      What are the pricing tiers?
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-answer">
-      <p><strong>Pilot - R1,500 once-off:</strong> 14 days, up to 100 leads, one source. Best for businesses who want to prove the system works before committing monthly. Full refund if we don't deliver by Day 14.</p>
-      <p><strong>Standard - R2,500/month:</strong> Up to 300 leads per month, all sources, weekly reports. No lock-in, cancel any time.</p>
-      <p><strong>Pro - R4,500/month:</strong> Unlimited leads, multiple locations or brands, monthly pipeline review. Full SLA with 4-hour escalation response commitment.</p>
-      <p>No setup fees on any tier.</p>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      What does the pilot guarantee actually mean?
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-answer">
-      <p>It means we deliver the complete recovery system within 14 days - templates approved, messages sent, and a weekly report in your inbox - or you pay nothing.</p>
-      <p>Note: the guarantee covers our delivery of the service, not the number of leads who respond. Lead response depends on the quality and age of your list, which is outside our control. What we guarantee is that the system runs as described.</p>
-      <p>If the delay is caused by you not providing a lead list or not approving templates, the 14-day clock does not run until those things are done.</p>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      How do I cancel or get a refund?
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-answer">
-      <p>Email <a href="mailto:hello@glowretrieval.com">hello@glowretrieval.com</a> and we will handle it. There is no cancellation form and no notice period. See our <a href="/refund.html">Refund Policy</a> for the full breakdown of what is covered and when refunds are initiated.</p>
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      Can I upgrade from the Pilot to Standard or Pro?
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-answer">
-      <p>Yes. Email us once your pilot is complete and we will move you to the appropriate tier. There is no upgrade fee. Your lead history and any approved templates carry over.</p>
+      <p>Damp proofing and waterproofing is live now through our DryCape site, covering Cape Town. We are rolling the same model out to more Cape Town trades. If you are in a trade we have not launched yet, get in touch and we will tell you where it sits in the queue.</p>
     </div>
   </div>
 
   <div class="cta-block">
-    <p>Still have a question not covered here?</p>
-    <a class="cta-btn" href="mailto:hello@glowretrieval.com">Email us</a>
+    <p>Want to lock your suburb before a competitor does?</p>
+    <a class="cta-btn" href="onboarding.html">Become a Provider</a>
   </div>
 
 </main>
 
 <footer>
   © 2026 Glow Retrieval &nbsp;|&nbsp;
-  <a href="/terms.html">Terms</a> &nbsp;|&nbsp;
-  <a href="/privacy.html">Privacy</a> &nbsp;|&nbsp;
-  <a href="/refund.html">Refund Policy</a> &nbsp;|&nbsp;
-  <a href="/faq.html">FAQ</a>
+  <a href="terms.html">Terms</a> &nbsp;|&nbsp;
+  <a href="privacy.html">Privacy</a> &nbsp;|&nbsp;
+  <a href="refund.html">Lead Credit Policy</a> &nbsp;|&nbsp;
+  <a href="faq.html">FAQ</a>
 </footer>
 
 <script>
@@ -297,7 +194,6 @@
     const isOpen = answer.classList.contains('open');
     answer.classList.toggle('open', !isOpen);
     icon.textContent = isOpen ? '+' : '-';
-    icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(0deg)';
   }
 </script>
 

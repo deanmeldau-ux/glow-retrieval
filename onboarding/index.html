@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Glow Retrieval - Client Onboarding</title>
+  <title>Become a Provider - Glow Retrieval</title>
+  <meta name="description" content="Apply to receive exclusive Cape Town service leads. Tell us your trade and suburbs and we confirm availability and pricing.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -15,12 +16,12 @@
       --surface: #111111;
       --surface2: #1a1a1a;
       --gold: #F5B800;
-      --gold-dim: #c99900;
       --white: #ffffff;
       --grey: #999999;
-      --danger: #ff4444;
+      --green: #22c55e;
     }
 
+    html, body { overflow-x: hidden; max-width: 100%; }
     body {
       background: var(--black);
       color: var(--white);
@@ -28,9 +29,10 @@
       font-size: 16px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
     }
+    input, select, textarea, button { font-size: 16px; }
 
-    /* NAV */
     nav {
       position: sticky;
       top: 0;
@@ -52,47 +54,31 @@
     }
     .logo span { color: var(--white); }
 
-    /* ONBOARDING CONTAINER */
-    .onboarding-wrapper {
-      max-width: 600px;
-      margin: 60px auto;
-      padding: 0 24px;
-    }
+    .onboarding-wrapper { max-width: 620px; margin: 56px auto; padding: 0 24px; }
 
-    .form-header {
-      text-align: center;
-      margin-bottom: 40px;
+    .form-header { text-align: center; margin-bottom: 36px; }
+    .form-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 50px; letter-spacing: 1.5px; margin-bottom: 14px; line-height: 1; }
+    .form-header p { color: var(--grey); font-size: 16px; line-height: 1.55; max-width: 460px; margin: 0 auto; }
+
+    .trust-row {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px;
+      margin: 26px auto 0; max-width: 520px;
     }
-    .form-header h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 48px;
-      letter-spacing: 1.5px;
-      margin-bottom: 12px;
-    }
-    .form-header p {
-      color: var(--grey);
-      font-size: 16px;
-      line-height: 1.5;
-    }
+    .trust-row span { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: #cfcfcf; }
+    .trust-row svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 2.2; }
 
     .onboarding-form {
       background: var(--surface);
       border: 1px solid #222;
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 40px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      margin-top: 36px;
     }
 
-    .form-group {
-      margin-bottom: 24px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
+    .form-group { margin-bottom: 24px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    .form-group .hint { font-weight: 400; color: var(--grey); font-size: 13px; }
     .form-group input[type="text"],
     .form-group input[type="email"],
     .form-group input[type="tel"],
@@ -102,36 +88,17 @@
       border: 1px solid #333;
       color: var(--white);
       padding: 14px 16px;
-      border-radius: 6px;
+      border-radius: 8px;
       font-family: 'Inter', sans-serif;
       font-size: 16px;
       transition: border-color 0.2s;
     }
-    .form-group input:focus,
-    .form-group select:focus {
-      outline: none;
-      border-color: var(--gold);
-    }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--gold); }
+    .form-group input::placeholder { color: #555; }
 
-    .checkbox-group {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 15px;
-      color: #ccc;
-      cursor: pointer;
-    }
-    .checkbox-label input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--gold);
-      cursor: pointer;
-    }
+    .checkbox-group { display: flex; flex-direction: column; gap: 12px; }
+    .checkbox-label { display: flex; align-items: center; gap: 10px; font-size: 15px; color: #ccc; cursor: pointer; }
+    .checkbox-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--gold); cursor: pointer; }
 
     .submit-btn {
       width: 100%;
@@ -142,147 +109,169 @@
       font-weight: 800;
       font-size: 16px;
       padding: 18px;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      margin-top: 16px;
+      margin-top: 8px;
       transition: background 0.15s, transform 0.1s;
     }
-    .submit-btn:hover {
-      background: #ffd040;
-      transform: translateY(-1px);
-    }
-    .submit-btn:disabled {
-      background: #555;
-      color: #222;
-      cursor: not-allowed;
-      transform: none;
-    }
+    .submit-btn:hover { background: #ffd040; transform: translateY(-1px); }
+    .submit-btn:disabled { background: #555; color: #222; cursor: not-allowed; transform: none; }
 
     .secure-note {
-      text-align: center;
-      font-size: 13px;
-      color: #666;
-      margin-top: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
+      text-align: center; font-size: 13px; color: #777; margin-top: 18px;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
     }
-    .secure-note svg { width: 14px; height: 14px; fill: #666; }
+    .secure-note svg { width: 14px; height: 14px; stroke: #777; fill: none; stroke-width: 2; }
 
-    /* LOADER */
-    .loader {
-      display: none;
-      text-align: center;
-      margin-top: 20px;
-      color: var(--gold);
-      font-weight: 600;
-      font-size: 15px;
-    }
+    .loader { display: none; text-align: center; margin-top: 18px; color: var(--gold); font-weight: 600; font-size: 15px; }
     .spinner {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(245,184,0,0.3);
-      border-radius: 50%;
-      border-top-color: var(--gold);
-      animation: spin 1s ease-in-out infinite;
-      margin-right: 8px;
-      vertical-align: middle;
+      display: inline-block; width: 20px; height: 20px;
+      border: 3px solid rgba(245,184,0,0.3); border-radius: 50%;
+      border-top-color: var(--gold); animation: spin 1s ease-in-out infinite;
+      margin-right: 8px; vertical-align: middle;
     }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .back-link { display: block; text-align: center; margin-top: 24px; font-size: 14px; color: var(--grey); text-decoration: none; }
+    .back-link:hover { color: var(--gold); }
 
     @media (max-width: 640px) {
-      .onboarding-form { padding: 24px; }
-      .form-header h1 { font-size: 36px; }
+      .onboarding-form { padding: 26px; }
+      .form-header h1 { font-size: 38px; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="/" class="logo">GLOW<span>RETRIEVAL</span></a>
+    <a href="index.html" class="logo">GLOW<span>RETRIEVAL</span></a>
   </nav>
 
   <div class="onboarding-wrapper">
     <div class="form-header">
-      <h1>Let's Get Started</h1>
-      <p>Step 1 of 2: Quick details to set up your pilot.</p>
+      <h1>Become a Provider</h1>
+      <p>Tell us your trade and the suburbs you cover. We confirm availability and your exact pricing before you pay anything.</p>
+      <div class="trust-row">
+        <span><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Exclusive leads</span>
+        <span><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> No lock-in</span>
+        <span><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> You hand over nothing</span>
+      </div>
     </div>
 
     <div class="onboarding-form">
       <form id="onboardingForm">
-        
+
         <div class="form-group">
           <label>Business Name</label>
-          <input type="text" id="bizName" placeholder="e.g. Apex Clinic" required>
+          <input type="text" id="bizName" placeholder="e.g. Cape Damp Solutions" required>
         </div>
 
         <div class="form-group">
           <label>Your Name</label>
-          <input type="text" id="contactName" placeholder="e.g. Sarah Jones" required>
+          <input type="text" id="contactName" placeholder="e.g. Johan van der Merwe" required>
         </div>
 
         <div class="form-group">
-          <label>WhatsApp Number</label>
+          <label>WhatsApp Number <span class="hint">(where we send your leads)</span></label>
           <input type="tel" id="contactPhone" placeholder="e.g. 072 123 4567" required>
         </div>
 
         <div class="form-group">
           <label>Email Address</label>
-          <input type="email" id="contactEmail" placeholder="sarah@example.com" required>
+          <input type="email" id="contactEmail" placeholder="you@yourbusiness.co.za" required>
         </div>
 
         <div class="form-group">
-          <label>Where do your old enquiries usually sit? (Tick all that apply)</label>
+          <label>Your Trade</label>
+          <select id="trade">
+            <option value="Damp proofing and waterproofing" selected>Damp proofing and waterproofing</option>
+            <option value="Roof leak repair">Roof leak repair</option>
+            <option value="Other (tell us below)">Other Cape Town trade</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Cape Town Suburbs You Cover <span class="hint">(so we can check availability)</span></label>
+          <input type="text" id="suburbs" placeholder="e.g. Constantia, Newlands, Tokai, Bergvliet" required>
+        </div>
+
+        <div class="form-group">
+          <label>How would you like to pay?</label>
           <div class="checkbox-group">
             <label class="checkbox-label">
-              <input type="checkbox" name="source" value="WhatsApp"> WhatsApp Chats
+              <input type="radio" name="plan" value="Suburb Exclusive (monthly)" checked style="width:18px;height:18px;accent-color:var(--gold);"> Suburb exclusive, flat monthly fee (most popular)
             </label>
             <label class="checkbox-label">
-              <input type="checkbox" name="source" value="Email"> Email Inbox
+              <input type="radio" name="plan" value="Pay Per Lead (prepaid)" style="width:18px;height:18px;accent-color:var(--gold);"> Pay per lead, prepaid credits
             </label>
             <label class="checkbox-label">
-              <input type="checkbox" name="source" value="Instagram"> Instagram DMs
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" name="source" value="Web"> Website Forms
+              <input type="radio" name="plan" value="Not sure yet" style="width:18px;height:18px;accent-color:var(--gold);"> Not sure yet, advise me
             </label>
           </div>
         </div>
 
-        <button type="submit" id="submitBtn" class="submit-btn">Continue to Secure Payment &rarr;</button>
-        
+        <button type="submit" id="submitBtn" class="submit-btn">Submit Application</button>
+
         <div id="loader" class="loader">
-          <div class="spinner"></div> Configuring your pilot...
+          <div class="spinner"></div> Sending your application...
         </div>
 
         <div class="secure-note">
-          <svg viewBox="0 0 24 24"><path d="M12 2C9.243 2 7 4.243 7 7v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10v8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z"/></svg>
-          Payment processed securely by Stripe
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          No payment is taken now. We review and confirm your suburb and pricing first.
         </div>
       </form>
     </div>
+
+    <a href="index.html" class="back-link">Back to homepage</a>
   </div>
 
   <script>
-    document.getElementById('onboardingForm').addEventListener('submit', function(e) {
+    // Pre-select plan from the homepage pricing buttons (?plan=suburb / per-lead / multi)
+    (function () {
+      const p = new URLSearchParams(window.location.search).get('plan');
+      const map = { 'suburb': 'Suburb Exclusive (monthly)', 'per-lead': 'Pay Per Lead (prepaid)' };
+      if (p && map[p]) {
+        const radio = document.querySelector('input[name="plan"][value="' + map[p] + '"]');
+        if (radio) radio.checked = true;
+      }
+    })();
+
+    document.getElementById('onboardingForm').addEventListener('submit', function (e) {
       e.preventDefault();
-      
       const btn = document.getElementById('submitBtn');
       const loader = document.getElementById('loader');
-      
+
+      // Build a clean summary and hand off to email so nothing is lost while the
+      // backend form endpoint (Web3Forms / Formspree free tier) is being connected.
+      const biz = encodeURIComponent(document.getElementById('bizName').value);
+      const name = encodeURIComponent(document.getElementById('contactName').value);
+      const phone = encodeURIComponent(document.getElementById('contactPhone').value);
+      const email = encodeURIComponent(document.getElementById('contactEmail').value);
+      const trade = encodeURIComponent(document.getElementById('trade').value);
+      const suburbs = encodeURIComponent(document.getElementById('suburbs').value);
+      const plan = encodeURIComponent((document.querySelector('input[name="plan"]:checked') || {}).value || '');
+
+      const subject = 'New provider application: ' + decodeURIComponent(biz);
+      const body =
+        'Business: ' + decodeURIComponent(biz) + '%0D%0A' +
+        'Contact: ' + decodeURIComponent(name) + '%0D%0A' +
+        'WhatsApp: ' + decodeURIComponent(phone) + '%0D%0A' +
+        'Email: ' + decodeURIComponent(email) + '%0D%0A' +
+        'Trade: ' + decodeURIComponent(trade) + '%0D%0A' +
+        'Suburbs: ' + decodeURIComponent(suburbs) + '%0D%0A' +
+        'Preferred plan: ' + decodeURIComponent(plan);
+
       btn.style.display = 'none';
       loader.style.display = 'block';
 
-      // Capture form data here if an API endpoint exists.
-      // For now, we simulate a brief processing delay before sending them to checkout.
-      
-      setTimeout(() => {
-        window.location.href = "https://buy.stripe.com/eVqaEX04G0rVgz8clHfEk05";
-      }, 1500);
+      // Open the prefilled email, then move them to the confirmation page.
+      window.location.href = 'mailto:hello@glowretrieval.com?subject=' +
+        encodeURIComponent(subject) + '&body=' + body;
+
+      setTimeout(function () {
+        window.location.href = 'thank-you.html';
+      }, 1200);
     });
   </script>
 

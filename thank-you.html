@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Payment Confirmed - Glow Retrieval</title>
+  <title>Application Received - Glow Retrieval</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -18,6 +18,7 @@
       --grey: #999999;
       --green: #22c55e;
     }
+    html, body { overflow-x: hidden; max-width: 100%; }
     body {
       background: var(--black);
       color: var(--white);
@@ -25,163 +26,54 @@
       font-size: 16px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
-    nav {
-      background: rgba(8,8,8,0.92);
-      border-bottom: 1px solid #1f1f1f;
-      padding: 16px 24px;
-      display: flex;
-      align-items: center;
-    }
-    main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 24px;
-    }
-    .card {
-      background: var(--surface);
-      border: 1px solid #2a2a2a;
-      border-radius: 16px;
-      padding: 56px 48px;
-      max-width: 580px;
-      width: 100%;
-      text-align: center;
-    }
+    nav { background: rgba(8,8,8,0.92); border-bottom: 1px solid #1f1f1f; padding: 16px 24px; display: flex; align-items: center; }
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 24px; }
+    .card { background: var(--surface); border: 1px solid #2a2a2a; border-radius: 16px; padding: 56px 48px; max-width: 600px; width: 100%; text-align: center; }
     .check {
-      width: 80px;
-      height: 80px;
+      width: 80px; height: 80px;
       background: rgba(34,197,94,0.1);
       border: 2px solid var(--green);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       margin: 0 auto 32px;
-      font-size: 36px;
     }
-    h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 48px;
-      letter-spacing: 1px;
-      color: var(--white);
-      margin-bottom: 8px;
+    .check svg { width: 38px; height: 38px; stroke: var(--green); fill: none; stroke-width: 3; }
+    h1 { font-family: 'Bebas Neue', sans-serif; font-size: 50px; letter-spacing: 1px; color: var(--white); margin-bottom: 10px; line-height: 1; }
+    .badge {
+      display: inline-block; background: rgba(245,184,0,0.12); border: 1px solid rgba(245,184,0,0.4);
+      color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 100px; margin-bottom: 24px;
     }
-    .tier-badge {
-      display: inline-block;
-      background: rgba(245,184,0,0.12);
-      border: 1px solid rgba(245,184,0,0.4);
-      color: var(--gold);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 100px;
-      margin-bottom: 24px;
-    }
-    .lead-text {
-      font-size: 17px;
-      color: #cccccc;
-      margin-bottom: 8px;
-      line-height: 1.6;
-    }
-    .email-notice {
-      font-size: 14px;
-      color: var(--grey);
-      margin-bottom: 32px;
-    }
+    .lead-text { font-size: 17px; color: #cccccc; margin-bottom: 8px; line-height: 1.6; }
+    .email-notice { font-size: 14px; color: var(--grey); margin-bottom: 32px; }
     .email-notice strong { color: var(--white); }
-    .steps {
-      background: var(--surface2);
-      border: 1px solid #222;
-      border-radius: 12px;
-      padding: 28px 32px;
-      margin: 0 0 28px;
-      text-align: left;
-    }
-    .steps-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--gold);
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-    .step {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 16px;
-      align-items: flex-start;
-    }
+    .steps { background: var(--surface2); border: 1px solid #222; border-radius: 12px; padding: 28px 32px; margin: 0 0 28px; text-align: left; }
+    .steps-label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); font-weight: 700; margin-bottom: 20px; }
+    .step { display: flex; gap: 16px; margin-bottom: 16px; align-items: flex-start; }
     .step:last-child { margin-bottom: 0; }
-    .step-num {
-      width: 26px;
-      height: 26px;
-      background: var(--gold);
-      color: var(--black);
-      font-weight: 900;
-      font-size: 12px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
+    .step-num { width: 26px; height: 26px; background: var(--gold); color: var(--black); font-weight: 900; font-size: 12px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
     .step-text { font-size: 14px; color: #bbb; line-height: 1.55; }
     .step-text strong { color: var(--white); }
-    .timer-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: #0d1a0d;
-      border: 1px solid #1a3a1a;
-      border-radius: 10px;
-      padding: 16px 20px;
-      margin-bottom: 24px;
-    }
-    .timer-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--green);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
-    }
+    .timer-row { display: flex; align-items: center; justify-content: center; gap: 10px; background: #0d1a0d; border: 1px solid #1a3a1a; border-radius: 10px; padding: 16px 20px; margin-bottom: 24px; }
+    .timer-dot { width: 10px; height: 10px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
     .timer-text { font-size: 14px; color: #ccc; }
     .timer-text strong { color: var(--white); }
-    .contact-line {
-      font-size: 13px;
-      color: var(--grey);
-    }
+    .contact-line { font-size: 13px; color: var(--grey); }
     .contact-line a { color: var(--gold); text-decoration: none; }
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 13px;
-      color: #333;
-      border-top: 1px solid #141414;
-    }
-    footer a { color: #444; text-decoration: none; }
-    @media (max-width: 600px) {
-      .card { padding: 40px 20px; }
-      h1 { font-size: 36px; }
-      .steps { padding: 22px 20px; }
-    }
+    footer { text-align: center; padding: 24px; font-size: 13px; color: #444; border-top: 1px solid #141414; }
+    footer a { color: #666; text-decoration: none; }
+    @media (max-width: 600px) { .card { padding: 40px 22px; } h1 { font-size: 38px; } .steps { padding: 22px 20px; } }
   </style>
 </head>
 <body>
   <nav>
-    <a href="https://glowretrieval.com" style="text-decoration:none;">
+    <a href="index.html" style="text-decoration:none;" aria-label="Glow Retrieval home">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 56" width="160" height="36" aria-label="Glow Retrieval">
         <defs>
           <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#F5B800" stop-opacity="0.5"/><stop offset="100%" stop-color="#F5B800" stop-opacity="0"/></radialGradient>
@@ -198,54 +90,46 @@
 
   <main>
     <div class="card">
-      <div class="check">✓</div>
-      <h1>You're In.</h1>
-      <div class="tier-badge" id="tier-badge">Payment Confirmed</div>
+      <div class="check">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h1>Application Received</h1>
+      <div class="badge">We Are On It</div>
 
-      <p class="lead-text">Your payment went through. Check your inbox - a confirmation receipt is on its way from Stripe.</p>
-      <p class="email-notice">We'll send you a full onboarding email <strong>within a few minutes</strong> with everything you need to get started.</p>
+      <p class="lead-text">Thanks for applying to receive exclusive Cape Town leads. We have your details.</p>
+      <p class="email-notice">If your email did not open automatically, just send your trade and suburbs to <strong>hello@glowretrieval.com</strong> and we will pick it up.</p>
 
       <div class="steps">
         <div class="steps-label">What Happens Next</div>
         <div class="step">
           <div class="step-num">1</div>
-          <div class="step-text"><strong>Onboarding email arrives</strong> - We'll confirm your plan, tell you exactly what we need from you, and set your start date.</div>
+          <div class="step-text"><strong>We check your suburb.</strong> We confirm whether your suburbs are still open for exclusive routing, since each one goes to a single provider only.</div>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <div class="step-text"><strong>You send us your old leads</strong> - A WhatsApp export, spreadsheet, contact list - any format works. Even rough notes.</div>
+          <div class="step-text"><strong>We confirm your pricing.</strong> We send you the exact per lead price or monthly suburb fee for your areas, based on demand and job size. No surprises.</div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <div class="step-text"><strong>We write your follow-up templates</strong> - You approve them before anything goes out. One quick review, then we're live.</div>
+          <div class="step-text"><strong>We seed your first leads.</strong> Once you are set up, qualified enquiries from your suburb are routed straight to your WhatsApp or email, usually within minutes.</div>
         </div>
         <div class="step">
           <div class="step-num">4</div>
-          <div class="step-text"><strong>Recovery starts</strong> - We follow up on your old leads, track every reply, and escalate hot prospects straight to you.</div>
+          <div class="step-text"><strong>You quote and win.</strong> You deal with the homeowner directly and keep the full value of every job. We take no cut of your work.</div>
         </div>
       </div>
 
       <div class="timer-row">
         <div class="timer-dot"></div>
-        <div class="timer-text">Onboarding email expected <strong>within a few minutes</strong></div>
+        <div class="timer-text">We usually reply <strong>within a few hours</strong> on weekdays</div>
       </div>
 
-      <p class="contact-line">Questions in the meantime? Email <a href="mailto:hello@glowretrieval.com">hello@glowretrieval.com</a> - Ryan gets back within a few hours.</p>
+      <p class="contact-line">Questions in the meantime? Email <a href="mailto:hello@glowretrieval.com">hello@glowretrieval.com</a> or message us on <a href="https://wa.me/27769896742" target="_blank" rel="noopener">WhatsApp</a>.</p>
     </div>
   </main>
 
   <footer>
-    &copy; 2026 Glow Retrieval &nbsp;&middot;&nbsp; <a href="https://glowretrieval.com">glowretrieval.com</a>
+    © 2026 Glow Retrieval &nbsp;&middot;&nbsp; <a href="index.html">glowretrieval.com</a>
   </footer>
-
-  <script>
-    // Read tier from URL param if Stripe passes it
-    const params = new URLSearchParams(window.location.search);
-    const tier = params.get('tier');
-    const badge = document.getElementById('tier-badge');
-    if (tier === 'pilot') badge.textContent = 'Starter Pilot - Confirmed';
-    else if (tier === 'standard') badge.textContent = 'Standard Plan - Confirmed';
-    else if (tier === 'pro') badge.textContent = 'Pro Plan - Confirmed';
-  </script>
 </body>
 </html>

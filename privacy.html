@@ -9,7 +9,9 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --gold: #F5B800; --black: #080808; --white: #f0f0f0; --grey: #888; }
-    body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; -webkit-text-size-adjust: 100%; }
+    img { max-width: 100%; height: auto; }
     nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 48px; border-bottom: 1px solid #1a1a1a; }
     .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; color: var(--gold); text-decoration: none; }
     .back-link { font-size: 14px; color: #666; text-decoration: none; }
@@ -31,93 +33,81 @@
 <body>
 
 <nav>
-  <a class="logo-text" href="/">GLOW RETRIEVAL</a>
-  <a class="back-link" href="/">← Back to site</a>
+  <a class="logo-text" href="index.html">GLOW RETRIEVAL</a>
+  <a class="back-link" href="index.html">Back to site</a>
 </nav>
 
 <main>
   <h1>Privacy Policy</h1>
   <p class="meta">Last updated: June 2026 &nbsp;|&nbsp; Glow Retrieval, Cape Town, South Africa</p>
 
-  <p>This policy explains what data we collect, how we use it, and your rights under the Protection of Personal Information Act 4 of 2013 (POPIA). We take your privacy and your clients' privacy seriously.</p>
+  <p>This policy explains what data we collect, how we use it, and the rights of everyone involved under the Protection of Personal Information Act 4 of 2013 (POPIA). We take the privacy of homeowners and providers seriously.</p>
 
   <h2>1. Who This Policy Covers</h2>
-  <p>This policy applies to:</p>
   <ul>
-    <li><strong>Prospective clients</strong> who visit our website or contact us</li>
-    <li><strong>Active clients</strong> who have purchased a Glow Retrieval service</li>
-    <li><strong>Lead data</strong> provided by clients for the purpose of follow-up sequences</li>
+    <li><strong>Homeowners</strong> who submit an enquiry on one of our niche sites (for example DryCape)</li>
+    <li><strong>Service providers</strong> who apply for or receive leads from us</li>
+    <li><strong>Visitors</strong> to glowretrieval.com and our niche sites</li>
   </ul>
 
   <h2>2. What Data We Collect</h2>
 
-  <p><strong>From you (the business owner):</strong></p>
+  <p><strong>From homeowners who enquire:</strong></p>
   <ul>
-    <li>Your name, business name, email address, and WhatsApp number</li>
-    <li>Business details provided in the onboarding form (services, pricing, escalation contacts)</li>
-    <li>Communication history (emails, messages, approvals)</li>
-    <li>Payment records (processed by Stripe - we do not store card details)</li>
+    <li>Name, contact number and/or email address</li>
+    <li>Their suburb and a description of the work they need (for example "rising damp in a Constantia home")</li>
   </ul>
 
-  <p><strong>From the lead lists you provide:</strong></p>
+  <p><strong>From providers:</strong></p>
   <ul>
-    <li>Names, phone numbers, and/or email addresses of people who previously enquired</li>
-    <li>Original enquiry context (if included in your export)</li>
-    <li>Response status and opt-out records</li>
+    <li>Your name, business name, email address and WhatsApp number</li>
+    <li>The trade and suburbs you cover, and your chosen plan</li>
+    <li>Communication history and payment records (payments processed by our payment provider; we do not store card details)</li>
   </ul>
 
   <p><strong>From website visitors:</strong></p>
   <ul>
-    <li>Standard web analytics (page views, referral source) via GitHub Pages hosting - no cookies placed by us</li>
+    <li>Standard analytics such as page views and referral source, used to improve the sites and measure where enquiries come from</li>
   </ul>
 
   <h2>3. Why We Collect It</h2>
   <ul>
-    <li>To deliver the lead recovery service you paid for</li>
-    <li>To draft, send, and track follow-up messages on your behalf</li>
-    <li>To generate weekly reports</li>
-    <li>To process payments and issue invoices</li>
-    <li>To communicate with you about your account</li>
+    <li>To connect a homeowner with one suitable local provider</li>
+    <li>To route exclusive leads to the correct provider and track coverage</li>
+    <li>To operate provider accounts, process payments and issue invoices</li>
+    <li>To improve the ranking and content of our niche sites</li>
   </ul>
-  <p>We do not use your data or your leads' data for any other purpose.</p>
+  <p>We do not use this data for any other purpose, and we do not sell it.</p>
 
-  <h2>4. How We Store It</h2>
-  <p>Lead data is stored in secure, access-controlled files on South African or EU-based systems. We do not store data on public servers or share cloud drives. Payment data is handled entirely by Stripe and subject to Stripe's privacy policy.</p>
+  <h2>4. The Homeowner Enquiry and Consent</h2>
+  <p>When a homeowner submits an enquiry on one of our forms, they are asking to be connected with a local specialist. By submitting the form they consent to their details being shared with one provider for the purpose of responding to that enquiry. We make this clear on the form itself. We share their details with one provider only.</p>
 
-  <h2>5. Who We Share It With</h2>
-  <p><strong>Nobody.</strong> We do not sell, rent, share, or disclose your data or your leads' data to any third party, except:</p>
+  <h2>5. What Providers May Do With Homeowner Data</h2>
+  <p>A provider who receives a lead may use those details only to respond to that specific enquiry. Providers may not resell the data, add the homeowner to marketing lists, or pass the details to anyone else. If a homeowner asks not to be contacted, the provider must stop immediately and tell us.</p>
+
+  <h2>6. How We Store It</h2>
+  <p>Enquiry and provider data is held in secure, access-controlled systems. Payment data is handled by our payment provider and is subject to their privacy policy. We do not place enquiry data on public or shared drives.</p>
+
+  <h2>7. Who We Share It With</h2>
+  <p>We share a homeowner's enquiry with the <strong>single</strong> provider routed to receive it. Beyond that we do not sell, rent or disclose data to any third party, except:</p>
   <ul>
-    <li>Stripe (payment processing only)</li>
-    <li>As required by South African law or a valid legal order</li>
+    <li>Our payment provider (for payment processing only)</li>
+    <li>Where required by South African law or a valid legal order</li>
   </ul>
 
-  <h2>6. How Long We Keep It</h2>
+  <h2>8. How Long We Keep It</h2>
   <ul>
-    <li>Active client data: retained for the duration of the service plus 12 months for invoicing and legal purposes</li>
-    <li>Lead lists: deleted within 7 days of service cancellation or written request</li>
-    <li>Opt-out records: retained indefinitely to ensure compliance</li>
+    <li>Homeowner enquiries: retained while we manage the introduction, then for a limited period for quality and dispute purposes</li>
+    <li>Provider account data: retained for the duration of the relationship plus 12 months for invoicing and legal purposes</li>
+    <li>Opt-out requests: retained as needed to ensure they are honoured</li>
     <li>Payment records: retained for 5 years as required by South African tax law</li>
   </ul>
 
-  <h2>7. Your Rights Under POPIA</h2>
-  <p>You have the right to:</p>
-  <ul>
-    <li>Request access to the personal information we hold about you</li>
-    <li>Request correction of inaccurate information</li>
-    <li>Request deletion of your data (subject to legal retention obligations)</li>
-    <li>Object to processing of your personal information</li>
-    <li>Lodge a complaint with the Information Regulator of South Africa</li>
-  </ul>
-  <p>To exercise any of these rights, contact us at <a href="mailto:hello@glowretrieval.com">hello@glowretrieval.com</a>. We will respond within 10 business days.</p>
-
-  <h2>8. Lead Data &amp; Third-Party Consent</h2>
-  <p>You, the client, are responsible for ensuring that the leads you provide to us made their enquiry via an opt-in or public channel. By submitting a lead list, you confirm that you have a lawful basis to follow up with those contacts under POPIA. We will not follow up with any contact who did not initiate an enquiry.</p>
-
-  <h2>9. Opt-Outs</h2>
-  <p>Any lead who requests to stop receiving messages is removed immediately and permanently. Opt-out records are kept indefinitely to prevent re-contact. If a lead contacts you directly to opt out, please notify us immediately.</p>
+  <h2>9. Your Rights Under POPIA</h2>
+  <p>You have the right to request access to the personal information we hold about you, to request correction or deletion (subject to legal retention), to object to processing, and to lodge a complaint with the Information Regulator of South Africa. To exercise any of these rights, contact <a href="mailto:hello@glowretrieval.com">hello@glowretrieval.com</a> and we will respond within a reasonable period.</p>
 
   <h2>10. Changes to This Policy</h2>
-  <p>We may update this policy from time to time. Active clients will be notified by email. The updated policy will always be available at <a href="/privacy.html">glowretrieval.com/privacy.html</a>.</p>
+  <p>We may update this policy from time to time. The current version will always be available at <a href="privacy.html">glowretrieval.com/privacy.html</a>.</p>
 
   <h2>11. Contact</h2>
   <p>Privacy questions or data requests: <a href="mailto:hello@glowretrieval.com">hello@glowretrieval.com</a></p>
@@ -126,10 +116,10 @@
 
 <footer>
   © 2026 Glow Retrieval &nbsp;|&nbsp;
-  <a href="/terms.html">Terms</a> &nbsp;|&nbsp;
-  <a href="/privacy.html">Privacy</a> &nbsp;|&nbsp;
-  <a href="/refund.html">Refund Policy</a> &nbsp;|&nbsp;
-  <a href="/faq.html">FAQ</a>
+  <a href="terms.html">Terms</a> &nbsp;|&nbsp;
+  <a href="privacy.html">Privacy</a> &nbsp;|&nbsp;
+  <a href="refund.html">Lead Credit Policy</a> &nbsp;|&nbsp;
+  <a href="faq.html">FAQ</a>
 </footer>
 
 </body>
