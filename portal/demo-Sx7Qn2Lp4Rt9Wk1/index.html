@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glow Retrieval - Contractor Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #080808;
+      --black-2: #111111;
+      --black-3: #1a1a1a;
+      --black-4: #242424;
+      --gold: #F5B800;
+      --gold-faint: rgba(245, 184, 0, 0.08);
+      --white: #FFFFFF;
+      --grey-light: #e0e0e0;
+      --grey-mid: #888888;
+      --grey-dark: #333333;
+      --green: #22c55e;
+      --blue: #3b82f6;
+      --radius: 8px;
+      --radius-lg: 12px;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ---- HEADER ---- */
+    .site-header { background: var(--black-2); border-bottom: 1px solid var(--grey-dark); padding: 0 24px; }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; display: flex; align-items: center;
+      justify-content: space-between; gap: 16px; padding: 20px 0; flex-wrap: wrap;
+    }
+    .header-brand { display: flex; flex-direction: column; gap: 2px; }
+    .wordmark {
+      font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.06em;
+      color: var(--gold); line-height: 1; text-decoration: none;
+    }
+    .dashboard-label {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--grey-mid);
+    }
+    .header-client { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .client-name { font-size: 1rem; font-weight: 600; color: var(--white); }
+    .plan-badge {
+      display: inline-block; padding: 3px 12px; border-radius: 100px; font-size: 0.7rem;
+      font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      background: rgba(245, 184, 0, 0.15); color: var(--gold); border: 1px solid rgba(245, 184, 0, 0.35);
+    }
+
+    /* ---- MAIN ---- */
+    .main {
+      max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px;
+      display: flex; flex-direction: column; gap: 48px;
+    }
+
+    .intro-note {
+      font-size: 0.92rem; color: var(--grey-light); background: var(--black-3);
+      border: 1px solid var(--grey-dark); border-left: 3px solid var(--gold);
+      border-radius: var(--radius); padding: 16px 20px;
+    }
+
+    /* ---- SECTION HEADINGS ---- */
+    .section-heading {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.08em;
+      color: var(--white); margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
+    }
+    .section-heading::after { content: ''; flex: 1; height: 1px; background: var(--grey-dark); }
+
+    /* ---- STAT CARDS ---- */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .stat-card {
+      background: var(--black-3); border: 1px solid var(--grey-dark); border-radius: var(--radius-lg);
+      padding: 24px 20px; display: flex; flex-direction: column; gap: 8px; transition: border-color 0.2s;
+    }
+    .stat-card:hover { border-color: rgba(245, 184, 0, 0.3); }
+    .stat-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--grey-mid);
+    }
+    .stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; color: var(--white); line-height: 1; }
+    .stat-card.highlight .stat-value { color: var(--gold); }
+
+    /* ---- INFO GRID (plan / billing) ---- */
+    .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .info-card {
+      background: var(--black-3); border: 1px solid var(--grey-dark);
+      border-radius: var(--radius-lg); padding: 24px;
+    }
+    .info-card.full-width { grid-column: 1 / -1; }
+    .info-card-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--grey-mid); margin-bottom: 8px;
+    }
+    .info-card-value { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; color: var(--white); line-height: 1.15; }
+    .info-card-value.gold { color: var(--gold); }
+    .info-card-value.green { color: var(--green); }
+    .info-note { font-size: 0.78rem; color: var(--grey-mid); margin-top: 8px; }
+    .suburb-pill {
+      display: inline-block; background: var(--black-4); border: 1px solid var(--grey-dark);
+      border-radius: 100px; padding: 4px 14px; font-size: 0.82rem; font-weight: 600;
+      color: var(--white); margin: 4px 6px 0 0;
+    }
+
+    /* ---- TABLE ---- */
+    .table-wrapper { overflow-x: auto; border-radius: var(--radius-lg); border: 1px solid var(--grey-dark); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    thead tr { background: var(--black-4); }
+    thead th {
+      padding: 14px 20px; text-align: left; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey-mid);
+      border-bottom: 1px solid var(--grey-dark); white-space: nowrap;
+    }
+    tbody tr { border-bottom: 1px solid #1e1e1e; transition: background 0.15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--black-3); }
+    tbody td { padding: 14px 20px; color: var(--grey-light); vertical-align: top; }
+    td .lead-detail { color: var(--grey-mid); font-size: 0.82rem; display: block; margin-top: 4px; }
+    td a { color: var(--gold); text-decoration: none; }
+    td a:hover { text-decoration: underline; }
+
+    .status-dot { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .status-dot::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--grey-mid); flex-shrink: 0; }
+    .status-dot.delivered::before { background: var(--green); }
+    .status-dot.contacted::before { background: var(--blue); }
+    .status-dot.won::before { background: var(--gold); }
+
+    .empty-state { padding: 36px 20px; text-align: center; color: var(--grey-mid); font-size: 0.92rem; }
+    .empty-state strong { color: var(--grey-light); display: block; margin-bottom: 6px; font-size: 1rem; }
+
+    /* ---- CTA ---- */
+    .cta-card {
+      background: var(--gold-faint); border: 1px solid rgba(245, 184, 0, 0.2);
+      border-radius: var(--radius-lg); padding: 32px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    }
+    .cta-card-text h3 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.06em;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .cta-card-text p { font-size: 0.9rem; color: var(--grey-light); max-width: 540px; line-height: 1.6; }
+    .btn-gold {
+      display: inline-block; background: var(--gold); color: var(--black); font-family: 'Inter', sans-serif;
+      font-weight: 700; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; padding: 14px 28px; border-radius: var(--radius); white-space: nowrap;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn-gold:hover { background: #ffc61a; transform: translateY(-1px); }
+
+    /* ---- FOOTER ---- */
+    .site-footer {
+      background: var(--black-2); border-top: 1px solid var(--grey-dark); padding: 28px 24px;
+      text-align: center; font-size: 0.82rem; color: var(--grey-mid);
+    }
+    .site-footer a { color: var(--gold); text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    .section { display: flex; flex-direction: column; }
+
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .info-grid { grid-template-columns: 1fr; }
+      .info-card.full-width { grid-column: auto; }
+      .header-inner { flex-direction: column; align-items: flex-start; }
+      .header-client { align-items: flex-start; }
+      .cta-card { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat-value { font-size: 2rem; }
+      .main { padding: 28px 16px 60px; gap: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <a class="wordmark" href="https://glowretrieval.com">Glow Retrieval</a>
+        <span class="dashboard-label">Contractor Dashboard</span>
+      </div>
+      <div class="header-client">
+        <span class="client-name">Sample Contractor (demo)</span>
+        <span class="plan-badge">Suburb exclusive</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="intro-note">
+      This is a demo of your Glow Retrieval contractor dashboard. Every lead that appears here came from a homeowner actively searching for your service in your area, and each one is sent to you alone. We never share or resell a lead. Real leads will replace this demo view once you are live.
+    </div>
+
+    <!-- STATS -->
+    <section class="section">
+      <h2 class="section-heading">Your Leads</h2>
+      <div class="stats-grid">
+        <div class="stat-card highlight">
+          <span class="stat-label">Leads This Month</span>
+          <span class="stat-value">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Leads All Time</span>
+          <span class="stat-value">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Suburbs Locked</span>
+          <span class="stat-value">1</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Niche</span>
+          <span class="stat-value" style="font-size:1.3rem;line-height:1.2">DryCape</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DELIVERED LEADS -->
+    <section class="section">
+      <h2 class="section-heading">Leads Delivered</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Suburb</th>
+              <th>Homeowner</th>
+              <th>Contact</th>
+              <th>Job</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+        <div class="empty-state"><strong>No leads delivered yet</strong>As soon as a homeowner in your area submits an enquiry, it lands here and we send it straight to you. You will get it by WhatsApp the moment it comes in.</div>
+      </div>
+    </section>
+
+    <!-- PLAN & BILLING -->
+    <section class="section">
+      <h2 class="section-heading">Plan &amp; Billing</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-label">Your Plan</div>
+          <div class="info-card-value gold">Suburb exclusive</div>
+          <div class="info-note">Flat monthly fee per locked suburb, confirmed before you commit</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Billing Status</div>
+          <div class="info-card-value green">Setup</div>
+          <div class="info-note">Next invoice: On first delivered lead</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Amount Owed</div>
+          <div class="info-card-value">R0</div>
+          <div class="info-note">Updated 2026-06-27</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Exclusivity</div>
+          <div class="info-card-value" style="font-size:1.1rem">One contractor only</div>
+          <div class="info-note">Every lead below was sent to you alone, never shared or resold.</div>
+        </div>
+        <div class="info-card full-width">
+          <div class="info-card-label">Suburbs Locked To You</div>
+          <div><span class="suburb-pill">Muizenberg</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <h2 class="section-heading">Want More Areas?</h2>
+      <div class="cta-card">
+        <div class="cta-card-text">
+          <h3>Lock another suburb</h3>
+          <p>Want every damp and waterproofing enquiry from another Cape Town suburb sent to you alone? Tell us which areas you cover and we will check what is open.</p>
+        </div>
+        <a class="btn-gold" href="mailto:hello@glowretrieval.com?subject=Lock another suburb - Sample Contractor (demo)&body=Hi, I would like to lock another suburb for exclusive leads.">Get In Touch</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>Questions about a lead? <a href="mailto:hello@glowretrieval.com">hello@glowretrieval.com</a> | <a href="https://www.glowretrieval.com">www.glowretrieval.com</a></p>
+  </footer>
+
+</body>
+</html>
