@@ -7,7 +7,7 @@
   <meta http-equiv="refresh" content="60">
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
-    :root{--black:#080808;--s:#111;--s2:#1a1a1a;--s3:#222;--gold:#F5B800;--w:#fff;--grey:#999;--green:#22c55e;--amber:#f59e0b;--red:#ef4444}
+    :root{--black:#080808;--s:#111;--s2:#1a1a1a;--gold:#F5B800;--w:#fff;--grey:#999;--green:#22c55e;--amber:#f59e0b;--red:#ef4444;--blue:#3b82f6}
     body{background:var(--black);color:var(--w);font-family:-apple-system,'Inter',sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
     a{color:var(--gold);text-decoration:none}
     a:hover{text-decoration:underline}
@@ -23,6 +23,7 @@
     .card-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
     .big-number{font-size:48px;font-weight:900;line-height:1;color:var(--w)}
     .big-number.gold{color:var(--gold)}
+    .big-number.green{color:var(--green)}
     .big-sub{font-size:13px;color:var(--grey);margin-top:4px}
     .section-title{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
     table{width:100%;border-collapse:collapse}
@@ -31,20 +32,13 @@
     tr:last-child td{border-bottom:none}
     tr:hover td{background:#0f0f0f}
     .badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
-    .badge-pilot{background:rgba(245,184,0,.12);color:var(--gold);border:1px solid rgba(245,184,0,.25)}
-    .badge-standard{background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.2)}
-    .badge-pro{background:rgba(239,68,68,.1);color:var(--red);border:1px solid rgba(239,68,68,.2)}
+    .badge-high,.badge-active{background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.2)}
+    .badge-medium,.badge-proposed{background:rgba(245,184,0,.12);color:var(--gold);border:1px solid rgba(245,184,0,.25)}
+    .badge-low,.badge-unassigned{background:rgba(153,153,153,.12);color:var(--grey);border:1px solid rgba(153,153,153,.25)}
     .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
     .dot-green{background:var(--green);box-shadow:0 0 6px var(--green)}
     .dot-amber{background:var(--amber);box-shadow:0 0 6px var(--amber)}
-    .dot-red{background:var(--red);box-shadow:0 0 6px var(--red)}
     .dot-grey{background:var(--grey)}
-    .log{background:#050505;border:1px solid #1a1a1a;border-radius:8px;padding:16px 20px;font-family:'SF Mono','Menlo',monospace;font-size:12px;line-height:1.7;max-height:340px;overflow-y:auto}
-    .log-line{color:#666}
-    .log-line.ok{color:#4ade80}
-    .log-line.err{color:var(--red)}
-    .log-line.warn{color:var(--amber)}
-    .log-line.info{color:#60a5fa}
     .stat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #141414;font-size:14px}
     .stat-row:last-child{border-bottom:none}
     .stat-row .label{color:var(--grey)}
@@ -52,986 +46,108 @@
     .empty{color:var(--grey);font-size:13px;text-align:center;padding:24px}
     .green{color:var(--green)}
     .gold{color:var(--gold)}
-    .hot{color:var(--amber)}
     .grey{color:var(--grey);font-size:13px}
-    .small{font-size:12px}
+    .note{font-size:12px;color:var(--grey);margin-top:10px}
     @media(max-width:900px){.grid-4{grid-template-columns:1fr 1fr}.grid-2{grid-template-columns:1fr}}
     @media(max-width:500px){.grid-4{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
 <header>
-  <div>
-    <span class="brand">GLOW RETRIEVAL <span>Owner Dashboard</span></span>
-  </div>
-  <div class="refresh">Auto-refreshes every 60s &nbsp;&middot;&nbsp; 2026-06-27 04:45:35 SAST</div>
+  <div><span class="brand">GLOW RETRIEVAL <span>Owner Dashboard</span></span></div>
+  <div class="refresh">Auto-refreshes every 60s &nbsp;&middot;&nbsp; 2026-06-27 04:51:22 SAST</div>
 </header>
 
 <div class="container">
 
   <div class="grid-4">
     <div class="card">
-      <div class="card-title">Monthly Recurring Revenue</div>
-      <div class="big-number gold">R0</div>
-      <div class="big-sub">0 Standard + 0 Pro</div>
+      <div class="card-title">Leads Captured</div>
+      <div class="big-number gold">0</div>
+      <div class="big-sub">0 this month</div>
     </div>
     <div class="card">
-      <div class="card-title">Active Clients</div>
-      <div class="big-number">1</div>
-      <div class="big-sub">Pilot: 1 &nbsp; Std: 0 &nbsp; Pro: 0</div>
+      <div class="card-title">Leads Delivered</div>
+      <div class="big-number green">0</div>
+      <div class="big-sub">0 pending or held</div>
     </div>
     <div class="card">
-      <div class="card-title">Lead Pipeline</div>
-      <div class="big-number">72</div>
-      <div class="big-sub">56 contacted &nbsp; 0 hot</div>
+      <div class="card-title">Revenue To Date</div>
+      <div class="big-number">R0</div>
+      <div class="big-sub">R0 currently owed</div>
     </div>
     <div class="card">
-      <div class="card-title">Watchdog Status</div>
-      <div style="margin-top:8px;font-size:14px;font-weight:700">
-        <span class="dot dot-red"></span>
-        CHECK REQUIRED
-      </div>
-      <div class="big-sub" style="margin-top:8px">Last: 2026-06-24 10:39:14</div>
+      <div class="card-title">Signed Contractors</div>
+      <div class="big-number">0</div>
+      <div class="big-sub">0 active suburbs, 2 targeted</div>
     </div>
   </div>
 
   <div class="card grid-1">
-    <div class="section-title">Active Clients</div>
+    <div class="section-title">Contractors</div>
     <div style="overflow-x:auto">
     <table>
       <thead>
-        <tr>
-          <th>Client</th><th>Plan</th><th>Leads</th><th>Contacted</th>
-          <th>Replies</th><th>Hot</th><th>Spent</th><th>Recovered</th>
-          <th>ROI</th><th>Updated</th><th></th>
-        </tr>
+        <tr><th>Contractor</th><th>Plan</th><th>Suburbs</th><th>Leads All Time</th><th>This Month</th><th>Billing</th><th>Owed</th><th></th></tr>
       </thead>
-      <tbody>
-            <tr>
-              <td><strong>deanmeldau@gmail.com</strong></td>
-              <td><span class="badge badge-pilot">pilot</span></td>
-              <td>72</td>
-              <td>56</td>
-              <td>6</td>
-              <td class="hot">0</td>
-              <td>R1,500</td>
-              <td class="green">R0</td>
-              <td class="gold">0x</td>
-              <td class="grey">2026-06-15</td>
-              <td><a href="https://glowretrieval.com/portal/***/" target="_blank">Portal &rarr;</a></td>
-            </tr></tbody>
+      <tbody><tr><td colspan="8" class="empty">No contractors signed yet. Sign the first damp-proofing contractor and their dashboard appears here.</td></tr></tbody>
     </table>
     </div>
   </div>
 
   <div class="grid-2">
     <div class="card">
-      <div class="section-title">Watchdog Log (latest)</div>
-      <div class="log"><div class="log-line info">[2026-06-24 11:05:02] Watchdog run complete</div>
-<div class="log-line">[2026-06-24 11:05:02] Owner dashboard updated</div>
-<div class="log-line">[2026-06-24 11:04:59] No new prospect emails</div>
-<div class="log-line info">[2026-06-24 11:04:57] Watchdog run started</div>
-<div class="log-line info">[2026-06-24 11:03:56] Watchdog run complete</div>
-<div class="log-line">[2026-06-24 11:03:56] Owner dashboard updated</div>
-<div class="log-line">[2026-06-24 11:03:53] No new prospect emails</div>
-<div class="log-line info">[2026-06-24 11:03:51] Watchdog run started</div>
-<div class="log-line info">[2026-06-24 11:02:51] Watchdog run complete</div>
-<div class="log-line">[2026-06-24 11:02:51] Owner dashboard updated</div>
-<div class="log-line">[2026-06-24 11:02:48] No new prospect emails</div>
-<div class="log-line info">[2026-06-24 11:02:45] Watchdog run started</div>
-<div class="log-line info">[2026-06-24 11:01:45] Watchdog run complete</div>
-<div class="log-line">[2026-06-24 11:01:45] Owner dashboard updated</div>
-<div class="log-line">[2026-06-24 11:01:42] No new prospect emails</div>
-<div class="log-line info">[2026-06-24 11:01:39] Watchdog run started</div>
-<div class="log-line info">[2026-06-24 11:00:39] Watchdog run complete</div>
-<div class="log-line">[2026-06-24 11:00:39] Owner dashboard updated</div>
-<div class="log-line">[2026-06-24 11:00:36] No new prospect emails</div>
-<div class="log-line info">[2026-06-24 11:00:34] Watchdog run started</div>
-<div class="log-line info">[2026-06-24 10:59:33] Watchdog run complete</div>
-<div class="log-line">[2026-06-24 10:59:33] Owner dashboard updated</div>
-<div class="log-line">[2026-06-24 10:59:31] No new prospect emails</div>
-<div class="log-line info">[2026-06-24 10:59:28] Watchdog run started</div>
-<div class="log-line info">[2026-06-24 10:58:28] Watchdog run complete</div>
-<div class="log-line">[2026-06-24 10:58:28] Owner dashboard updated</div>
-<div class="log-line">[2026-06-24 10:58:25] No new prospect emails</div>
-<div class="log-line info">[2026-06-24 10:58:22] Watchdog run started</div>
-<div class="log-line info">[2026-06-24 10:57:22] Watchdog run complete</div>
-<div class="log-line">[2026-06-24 10:57:22] Owner dashboard updated</div>
-<div class="log-line">[2026-06-24 10:57:19] No new prospect emails</div>
-<div class="log-line info">[2026-06-24 10:57:17] Watchdog run started</div>
-<div class="log-line info">[2026-06-24 10:56:17] Watchdog run complete</div>
-<div class="log-line">[2026-06-24 10:56:17] Owner dashboard updated</div>
-<div class="log-line">[2026-06-24 10:56:14] No new prospect emails</div>
-<div class="log-line info">[2026-06-24 10:56:11] Watchdog run started</div>
-<div class="log-line info">[2026-06-24 10:55:11] Watchdog run complete</div>
-<div class="log-line">[2026-06-24 10:55:11] Owner dashboard updated</div>
-<div class="log-line">[2026-06-24 10:55:08] No new prospect emails</div>
-<div class="log-line info">[2026-06-24 10:55:05] Watchdog run started</div>
-</div>
+      <div class="section-title">Niche Breakdown</div>
+      <div class="stat-row"><span class="label">DryCape (damp proofing, Cape Town)</span><span class="val gold">LIVE</span></div>
+      <div class="stat-row"><span class="label">DryCape leads captured</span><span class="val">0</span></div>
+      <div class="stat-row"><span class="label">DryCape leads this month</span><span class="val">0</span></div>
+      <div class="stat-row"><span class="label">Next niche</span><span class="val grey">Not launched yet</span></div>
+      <div class="note">DryCape is the first trade niche. Others get added the same way: rank a niche site, capture, deliver exclusively.</div>
     </div>
     <div class="card">
-      <div class="section-title">Outreach Summary</div>
-      <div class="stat-row"><span class="label">Total prospects</span><span class="val">72</span></div>
-      <div class="stat-row"><span class="label">Contacted</span><span class="val" style="color:var(--amber)">56</span></div>
-      <div class="stat-row"><span class="label">Replied</span><span class="val green">6</span></div>
-      <div class="stat-row"><span class="label">Converted</span><span class="val gold">0</span></div>
-      <div class="stat-row"><span class="label">Not yet contacted</span><span class="val">16</span></div>
-      <div style="margin-top:20px">
-      <div class="section-title">Tuesday Prep</div>
-      <div class="stat-row"><span class="label">Fresh researched prospects</span><span class="val">33</span></div>
-      <div class="stat-row"><span class="label">Clean new prospects</span><span class="val green">16</span></div>
-      <div class="stat-row"><span class="label">Score 4+ prospects</span><span class="val gold">14</span></div>
-      <div class="stat-row"><span class="label">Approval batch</span><span class="val">10</span></div>
-      <div class="stat-row"><span class="label">Tuesday outreach sent</span><span class="val">0</span></div>
-      </div>
-      <div style="margin-top:20px">
-      <div class="section-title">Pipeline Totals</div>
-      <div class="stat-row"><span class="label">Leads loaded</span><span class="val">72</span></div>
-      <div class="stat-row"><span class="label">Follow-ups sent</span><span class="val">56</span></div>
-      <div class="stat-row"><span class="label">Replies received</span><span class="val green">6</span></div>
-      <div class="stat-row"><span class="label">Hot leads escalated</span><span class="val gold">0</span></div>
-      </div>
+      <div class="section-title">System Health</div>
+      <div class="stat-row"><span class="label">Capture endpoint (tunnel)</span><span class="val"><span class="dot dot-green"></span>live</span></div>
+      <div class="stat-row"><span class="label">Webhook (Ryan)</span><span class="val">127.0.0.1:8080</span></div>
+      <div class="stat-row"><span class="label">Homeowner confirmation email</span><span class="val green">Wired</span></div>
+      <div class="note" style="word-break:break-all">Tunnel: https://citizens-indie-bristol-angeles.trycloudflare.com</div>
     </div>
   </div>
 
   <div class="card grid-1">
-    <div class="section-title">Tuesday Top 10 Approval Batch (No Outreach Sent)</div>
+    <div class="section-title">Recent Captured Leads (newest 25)</div>
     <div style="overflow-x:auto">
     <table>
       <thead>
-        <tr>
-          <th>Rank</th><th>Business</th><th>Area</th><th>Channel</th>
-          <th>Contact</th><th>Angle</th><th>Source</th>
-        </tr>
+        <tr><th>Received</th><th>Suburb</th><th>Homeowner</th><th>Phone</th><th>Service</th><th>Quality</th></tr>
       </thead>
-      <tbody>
-        <tr>
-          <td class="gold">1</td>
-          <td><strong>Meraki Aesthetics Clinic</strong></td>
-          <td class="grey">Cape Town</td>
-          <td class="grey">Email</td>
-          <td>info@merakicapetown.co.za</td>
-          <td class="grey small">Old treatment enquiries and skin-treatment quote requests that go quiet after first contact</td>
-          <td><a href="https://www.instagram.com/meraki_cape_town/" target="_blank">Source</a></td>
-        </tr>
-        <tr>
-          <td class="gold">2</td>
-          <td><strong>Dr Blink Medical Aesthetics</strong></td>
-          <td class="grey">Bloubergstrand</td>
-          <td class="grey">Email</td>
-          <td>info@drblink.co.za</td>
-          <td class="grey small">Laser/aesthetic enquiries needing fast, approved follow-up after WhatsApp or email interest</td>
-          <td><a href="https://www.facebook.com/DrBlinkinc/" target="_blank">Source</a></td>
-        </tr>
-        <tr>
-          <td class="gold">3</td>
-          <td><strong>Life Aesthetics Clinic</strong></td>
-          <td class="grey">De Waterkant</td>
-          <td class="grey">Email</td>
-          <td>infodwk@lifeaesthetics.co.za</td>
-          <td class="grey small">Premium clinic follow-up process for consultation enquiries that do not book</td>
-          <td><a href="https://lifeaesthetics.co.za/" target="_blank">Source</a></td>
-        </tr>
-        <tr>
-          <td class="gold">4</td>
-          <td><strong>Dermology Cape Town</strong></td>
-          <td class="grey">Cape Town CBD</td>
-          <td class="grey">Email</td>
-          <td>capetown@dermology.co.za</td>
-          <td class="grey small">Old laser/skin enquiries from WhatsApp, email and DMs; simple 14-day recovery pilot</td>
-          <td><a href="https://dermology.co.za/cape-town-wc/" target="_blank">Source</a></td>
-        </tr>
-        <tr>
-          <td class="gold">5</td>
-          <td><strong>Lasermed Tyger Valley</strong></td>
-          <td class="grey">Bellville / Tyger Valley</td>
-          <td class="grey">Email</td>
-          <td>skinlaser@mweb.co.za</td>
-          <td class="grey small">Laser and rejuvenation quote enquiries; recover people who asked questions but never booked</td>
-          <td><a href="https://lasermed.co.za/talk-to-us/" target="_blank">Source</a></td>
-        </tr>
-        <tr>
-          <td class="gold">6</td>
-          <td><strong>Dr Michelle Fourie Aesthetics</strong></td>
-          <td class="grey">Durbanville</td>
-          <td class="grey">Email</td>
-          <td>drmichellefourie@gmail.com</td>
-          <td class="grey small">Medical aesthetic consultation enquiries that require polite, non-clinical follow-up</td>
-          <td><a href="https://drmichellefourie.co.za/" target="_blank">Source</a></td>
-        </tr>
-        <tr>
-          <td class="gold">7</td>
-          <td><strong>Advanced Full Face Aesthetics / Dr Chris Giezing</strong></td>
-          <td class="grey">Stellenbosch</td>
-          <td class="grey">Email</td>
-          <td>info@drchrisgiezing.co.za</td>
-          <td class="grey small">Aesthetic doctor lead recovery: old consult requests, filler/Botox questions, pricing hesitation</td>
-          <td><a href="https://drchrisgiezing.co.za/contact/" target="_blank">Source</a></td>
-        </tr>
-        <tr>
-          <td class="gold">8</td>
-          <td><strong>NuSkinnovation V&A Waterfront</strong></td>
-          <td class="grey">V&A Waterfront</td>
-          <td class="grey">Email</td>
-          <td>capetown@nuskinnovation.co.za</td>
-          <td class="grey small">Branch enquiry follow-up for V&A aesthetic/laser bookings</td>
-          <td><a href="https://www.nuskinnovation.co.za/about-nuskinnovation/nuskinnovation-victoria-and-alfred-waterfront-cape-town/" target="_blank">Source</a></td>
-        </tr>
-        <tr>
-          <td class="gold">9</td>
-          <td><strong>Natural Aesthetics Group</strong></td>
-          <td class="grey">Green Point / Tyger Valley / Somerset West</td>
-          <td class="grey">Email</td>
-          <td>bookings@naskin.co.za</td>
-          <td class="grey small">Multi-branch old enquiry recovery pilot across WhatsApp/email/online booking leads</td>
-          <td><a href="https://www.instagram.com/natural_aesthetics_skin/?hl=en" target="_blank">Source</a></td>
-        </tr>
-        <tr>
-          <td class="gold">10</td>
-          <td><strong>The Best Laser & Skin</strong></td>
-          <td class="grey">Vredehoek / Cape Town</td>
-          <td class="grey">Email</td>
-          <td>info@thebestclinic.co.za</td>
-          <td class="grey small">Laser/skin enquiry recovery for people who asked about treatment but did not book</td>
-          <td><a href="https://www.instagram.com/reel/DLrRDzWMdDT/" target="_blank">Source</a></td>
-        </tr></tbody>
+      <tbody><tr><td colspan="6" class="empty">No homeowner leads captured yet. They will appear here the moment a DryCape enquiry comes in.</td></tr></tbody>
     </table>
     </div>
   </div>
 
   <div class="card grid-1">
-    <div class="section-title">Prospect List (72 leads, sorted by score)</div>
+    <div class="section-title">Suburb Routing (exclusivity ledger)</div>
     <div style="overflow-x:auto">
     <table>
       <thead>
-        <tr>
-          <th>Business</th><th>Area</th><th>Type</th><th>Score</th>
-          <th>Channel</th><th>Status</th><th>Reply</th><th>Contact</th>
-        </tr>
+        <tr><th>Suburb</th><th>Services</th><th>Contractor</th><th>Status</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td><strong>Atlantic Dermatology & Laser</strong></td>
-          <td class="grey">Sea Point</td>
-          <td>Aesthetic / Laser Clinic</td>
-          <td class="gold">5</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27661417979" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Natural Aesthetics Green Point</strong></td>
-          <td class="grey">Green Point</td>
-          <td>Aesthetic Clinic</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27699100540" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Natural Aesthetics Tyger Valley</strong></td>
-          <td class="grey">Tyger Valley</td>
-          <td>Aesthetic Clinic</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/naturalaestheticssa" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Dr Scott Barker Aesthetic & Wellness Clinic</strong></td>
-          <td class="grey">Sea Point</td>
-          <td>Medical Aesthetic Clinic</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/drscottbarker" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Body360 Medical Aesthetics</strong></td>
-          <td class="grey">Melkbosstrand</td>
-          <td>Medical Aesthetic Clinic</td>
-          <td class="gold">5</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--green)">replied</td>
-          <td class="grey small">Auto-reply: 'You are a valuable client, this phone is not ma...</td>
-          <td><a href="https://wa.me/27768708511" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>House of Laser CPT</strong></td>
-          <td class="grey">Cape Town City</td>
-          <td>Laser Hair Removal Studio</td>
-          <td class="gold">5</td>
-          <td class="grey">Instagram</td>
-          <td style="color:var(--green)">touch2</td>
-          <td class="grey small">Auto-reply: 'Thank you for contacting House Of Laser Cape To...</td>
-          <td><a href="https://instagram.com/houseoflasercpt" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Laser Clinic Cape Town</strong></td>
-          <td class="grey">Cape Town</td>
-          <td>Laser Hair Removal Clinic</td>
-          <td class="gold">5</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27614229428" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Excentric Hair Artists Kloof St</strong></td>
-          <td class="grey">Gardens</td>
-          <td>Hair Salon</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--green)">replied</td>
-          <td class="grey small">Auto-reply + staff: 'Hi, I'm Lynne — I'd love to help with y...</td>
-          <td><a href="https://instagram.com/excentriconkloof" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Excentric Hair Artists Sea Point</strong></td>
-          <td class="grey">Sea Point</td>
-          <td>Hair Salon</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27664311901" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Dynasty Hair and Beauty</strong></td>
-          <td class="grey">Woodstock</td>
-          <td>Hair Salon</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--green)">replied</td>
-          <td class="grey small">Thank you for contacting Dynasty Hair and Beauty. We are cur...</td>
-          <td><a href="https://wa.me/27736403535" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Just Style Me Hair Studio</strong></td>
-          <td class="grey">Melkbosstrand</td>
-          <td>Hair Salon</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27630553341" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>blowdryco</strong></td>
-          <td class="grey">Cape Town</td>
-          <td>Blow Dry Bar</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/blowdryco" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>OptiSmile Dental</strong></td>
-          <td class="grey">De Waterkant</td>
-          <td>Dental Practice</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--green)">replied</td>
-          <td class="grey small">Chatbot: '1. New Patient 2. Returning Patient 3. Urgent' — 3...</td>
-          <td><a href="https://instagram.com/optismile" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Floss Dental</strong></td>
-          <td class="grey">Cape Town</td>
-          <td>Dental Practice</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/flossdentalhygieneclinic" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>JJS Dentistry Cape Town</strong></td>
-          <td class="grey">V&A Waterfront</td>
-          <td>Cosmetic Dental Practice</td>
-          <td class="gold">5</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/jjs_dentistry_capetown" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Fit Panda Studio</strong></td>
-          <td class="grey">Claremont</td>
-          <td>Pilates / Barre Studio</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27769106365" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>MoveOn 89</strong></td>
-          <td class="grey">Kloof Street</td>
-          <td>Pilates / Physio Studio</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27829230367" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Horizen Gym</strong></td>
-          <td class="grey">Sea Point</td>
-          <td>Boutique Strength Gym</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/horizengym" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>BUC Fitness Club</strong></td>
-          <td class="grey">Atlantic Seaboard</td>
-          <td>Boutique Gym / Wellness</td>
-          <td class="gold">5</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/bucfitnessclub" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>SWEAT 1000 Sea Point</strong></td>
-          <td class="grey">Sea Point</td>
-          <td>Boutique Fitness Studio</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27673086318" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Atteridge Real Estate</strong></td>
-          <td class="grey">Hout Bay</td>
-          <td>Property Agency</td>
-          <td class="gold">5</td>
-          <td class="grey">Website</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/atteridgerealestate" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Signature Real Estate</strong></td>
-          <td class="grey">Hout Bay / Constantia</td>
-          <td>Property Agency</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/signaturerealestate" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>The Cape Town Pool Company</strong></td>
-          <td class="grey">Multiple suburbs</td>
-          <td>Pool Cleaning & Maintenance</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/capetownpoolcompany" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>The Pool Co</strong></td>
-          <td class="grey">Atlantic Seaboard</td>
-          <td>Pool Cleaning Service</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/thepoolco" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Sunrise Pool Service & Repairs</strong></td>
-          <td class="grey">Durbanville</td>
-          <td>Pool Cleaning & Repairs</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27638942423" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>TMC Painting</strong></td>
-          <td class="grey">Multiple suburbs</td>
-          <td>Residential Painting</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27814562274" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Deluxe Painters</strong></td>
-          <td class="grey">Northern & Southern Suburbs</td>
-          <td>Painting Contractor</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27768803139" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Handyman Homes</strong></td>
-          <td class="grey">Cape Town</td>
-          <td>Plumbing / Handyman Services</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27713192831" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>GS Renovations</strong></td>
-          <td class="grey">Cape Town</td>
-          <td>Building / Renovation</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/gsrenovations" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Edu-Me</strong></td>
-          <td class="grey">Cape Town</td>
-          <td>Online Tutoring (WhatsApp-based)</td>
-          <td class="gold">5</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/edumesa" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Skin Renewal Cape Quarter</strong></td>
-          <td class="grey">Green Point</td>
-          <td>Medical Aesthetic Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27871531020" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Skin Renewal Claremont</strong></td>
-          <td class="grey">Claremont</td>
-          <td>Medical Aesthetic Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27871531018" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Skin Renewal Willowbridge</strong></td>
-          <td class="grey">Bellville</td>
-          <td>Medical Aesthetic Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27871531045" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Skin Renewal Constantia</strong></td>
-          <td class="grey">Constantia</td>
-          <td>Medical Aesthetic Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27871531028" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Natural Aesthetics Somerset West</strong></td>
-          <td class="grey">Somerset West</td>
-          <td>Aesthetic Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27699100540" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Laserderm</strong></td>
-          <td class="grey">City Bowl</td>
-          <td>Medical Aesthetic Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27767300894" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Panorama Dermatology Clinic</strong></td>
-          <td class="grey">Panorama</td>
-          <td>Dermatology + Aesthetic Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27793211973" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>SCINmed</strong></td>
-          <td class="grey">Cape Town</td>
-          <td>Medical Aesthetic Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27797604142" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>The Best Laser & Skin</strong></td>
-          <td class="grey">Vredehoek</td>
-          <td>Aesthetic / Laser Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27662574046" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Aesthetic Lab Cape Town</strong></td>
-          <td class="grey">Century City</td>
-          <td>Medical Aesthetic Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27724001635" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>NuSkinnovation V&A</strong></td>
-          <td class="grey">V&A Waterfront</td>
-          <td>Medical Aesthetic Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27764029762" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>DermaPulse Laser Clinic</strong></td>
-          <td class="grey">Somerset West</td>
-          <td>Aesthetic / Laser Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://dermapulse.co.za" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(96,165,250,.1);color:#60a5fa;border:1px solid rgba(96,165,250,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Website</a></td>
-        </tr>
-        <tr>
-          <td><strong>ABC Aesthetics</strong></td>
-          <td class="grey">Claremont</td>
-          <td>Medical Aesthetic Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://abcaesthetics.co.za" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(96,165,250,.1);color:#60a5fa;border:1px solid rgba(96,165,250,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Website</a></td>
-        </tr>
-        <tr>
-          <td><strong>The Aesthetics Institute</strong></td>
-          <td class="grey">Century City</td>
-          <td>Aesthetic / Wellness Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://taisa.co.za" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(96,165,250,.1);color:#60a5fa;border:1px solid rgba(96,165,250,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Website</a></td>
-        </tr>
-        <tr>
-          <td><strong>Soul Salon</strong></td>
-          <td class="grey">Durbanville</td>
-          <td>Hair Salon</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27645359501" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Balisimo Salon</strong></td>
-          <td class="grey">Table View</td>
-          <td>Hair Salon</td>
-          <td class="gold">4</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27215576110" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Snip Snap Salon</strong></td>
-          <td class="grey">Newlands</td>
-          <td>Hair Salon</td>
-          <td class="gold">4</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27764710811" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Just Peachy Hair</strong></td>
-          <td class="grey">Claremont</td>
-          <td>Hair Salon</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27676611130" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Mark Adrian Hair Design</strong></td>
-          <td class="grey">Claremont</td>
-          <td>Hair Salon</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/mark_adrian_hair_design" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Paradise Road Dental</strong></td>
-          <td class="grey">Newlands</td>
-          <td>Dental Practice</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27617121111" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Kromboom Dental Centre</strong></td>
-          <td class="grey">Rondebosch</td>
-          <td>Dental Practice</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27766174756" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>iSmile Dental</strong></td>
-          <td class="grey">Salt River</td>
-          <td>Dental Practice</td>
-          <td class="gold">4</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27671623964" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Mountcare Clinic</strong></td>
-          <td class="grey">Cape Town</td>
-          <td>Dental / Medical Clinic</td>
-          <td class="gold">4</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:var(--green)">replied</td>
-          <td class="grey small">Auto-reply: 'We're unavailable right now, but will respond a...</td>
-          <td><a href="https://wa.me/27681282023" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>The Dental Room</strong></td>
-          <td class="grey">Parow</td>
-          <td>Dental Practice</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/thedentalroom" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Dentists Durbanville</strong></td>
-          <td class="grey">Durbanville</td>
-          <td>Cosmetic Dental Practice</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/dentistsdurbanville" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>The Body Space</strong></td>
-          <td class="grey">Northern Suburbs</td>
-          <td>Pilates / Yoga Studio</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27826739291" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Body & More Pilates Studio</strong></td>
-          <td class="grey">Claremont</td>
-          <td>Pilates Studio</td>
-          <td class="gold">4</td>
-          <td class="grey">Website</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/bodyandmorepilates" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Atlantic Phoenix Fitness</strong></td>
-          <td class="grey">Atlantic Seaboard</td>
-          <td>Personal Training Studio</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27828225709" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>SBG Cape Town</strong></td>
-          <td class="grey">Cape Town</td>
-          <td>MMA / BJJ Gym</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27837601183" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Impakt SA</strong></td>
-          <td class="grey">Cape Town</td>
-          <td>Boxing / Kickboxing Studio</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/impaktsa" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Greeff Christie's International Real Estate</strong></td>
-          <td class="grey">Southern Suburbs</td>
-          <td>Property Agency</td>
-          <td class="gold">4</td>
-          <td class="grey">Website</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/greeffproperties" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Seeff Properties Blouberg</strong></td>
-          <td class="grey">Table View</td>
-          <td>Property Agency</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/seeffproperties" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Chas Everitt Western Seaboard</strong></td>
-          <td class="grey">Milnerton</td>
-          <td>Property Agency</td>
-          <td class="gold">4</td>
-          <td class="grey">Website</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/chaseveritt" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Pam Golding Properties Southern Suburbs</strong></td>
-          <td class="grey">Constantia</td>
-          <td>Property Agency</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/pamgoldingproperties" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Rawson Property Group</strong></td>
-          <td class="grey">Multiple suburbs</td>
-          <td>Property Agency</td>
-          <td class="gold">4</td>
-          <td class="grey">Website</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/rawsonproperties" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Cape Pools</strong></td>
-          <td class="grey">Multiple suburbs</td>
-          <td>Pool Maintenance</td>
-          <td class="gold">4</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27678467064" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Budget Painters</strong></td>
-          <td class="grey">Multiple suburbs</td>
-          <td>Painting Contractor</td>
-          <td class="gold">4</td>
-          <td class="grey">Website</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/budgetpainters" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Affordable Painters Cape Town</strong></td>
-          <td class="grey">Cape Town</td>
-          <td>Painting Contractor</td>
-          <td class="gold">4</td>
-          <td class="grey">Website</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://instagram.com/affordablepainterscpt" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(245,184,0,.1);color:var(--gold);border:1px solid rgba(245,184,0,.2);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">Instagram</a></td>
-        </tr>
-        <tr>
-          <td><strong>Tutorific Academic Tutoring Centre</strong></td>
-          <td class="grey">Claremont</td>
-          <td>Tutoring Centre</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:var(--amber)">contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27620402601" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Tutor Doctor Cape Town North</strong></td>
-          <td class="grey">Northern Suburbs</td>
-          <td>Tutoring Centre</td>
-          <td class="gold">4</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27824913227" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Cape Town Tutors</strong></td>
-          <td class="grey">Multiple areas</td>
-          <td>Tutoring Platform</td>
-          <td class="gold">4</td>
-          <td class="grey">Email</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27739859293" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td><strong>Kumon Panorama</strong></td>
-          <td class="grey">Panorama</td>
-          <td>Educational Learning Centre</td>
-          <td class="gold">4</td>
-          <td class="grey">WhatsApp</td>
-          <td style="color:#666">not_contacted</td>
-          <td class="grey small"></td>
-          <td><a href="https://wa.me/27794740491" target="_blank" rel="noopener" style="display:inline-block;padding:4px 10px;background:rgba(37,211,102,.12);color:#25d366;border:1px solid rgba(37,211,102,.25);border-radius:6px;font-size:11px;font-weight:700;text-decoration:none">WhatsApp</a></td>
-        </tr></tbody>
+            <tr>
+              <td>Constantia</td>
+              <td class="grey">waterproofing, damp-proofing, rising-damp-treatment, roof-leak-repair, mould-treatment</td>
+              <td>EXAMPLE Specialist (not signed)</td>
+              <td><span class="badge badge-proposed">proposed</span></td>
+            </tr>
+            <tr>
+              <td>Muizenberg</td>
+              <td class="grey">waterproofing, damp-proofing, rising-damp-treatment, roof-leak-repair</td>
+              <td>EXAMPLE Coastal Specialist (not signed)</td>
+              <td><span class="badge badge-proposed">proposed</span></td>
+            </tr></tbody>
     </table>
     </div>
+    <div class="note">A suburb only delivers live once a contractor there is marked active in lead_routing.json. Proposed means a target we may pitch, not signed.</div>
   </div>
 
 </div>
