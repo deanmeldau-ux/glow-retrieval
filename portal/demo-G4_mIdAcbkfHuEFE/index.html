@@ -149,8 +149,8 @@
 
   <div class="bill">
     <div class="b"><div class="big gold">10</div><div class="lbl">Credits</div></div>
-    <div class="b"><div class="big green">1</div><div class="lbl">Invoices</div></div>
-    <div class="b"><div class="big">1</div><div class="lbl">Open quotes</div></div>
+    <div class="b"><div class="big green">2</div><div class="lbl">Invoices</div></div>
+    <div class="b"><div class="big">0</div><div class="lbl">Open quotes</div></div>
     <div class="spacer"></div>
     <a class="a-gold" href="#" onclick="buy();return false">Buy credits</a>
   </div>
@@ -170,7 +170,7 @@
       <div class="detail">Waterproof the flat roof and parapet walls.</div>
       <div class="value">Job value R6,000</div>
       
-      <div class="quotes-on-card"><div class="doc-inline"><span class="dchip doc-quote">Quote</span><span class="doc-no">Q-PORTAL-0002</span><span class="doc-tot">R12,535.00</span><span class="doc-acts"><a class="btn btn-ghost" href="q/doc_274937b616034609.html" target="_blank">View</a><button class="btn btn-primary" onclick="convertInvoice('doc_274937b616034609',this)">Convert to invoice</button></span></div><div class="qc-actions"><button class="btn btn-quote" onclick="openQuote('lead_2ca3dfaa0f3c5038','{&quot;name&quot;: &quot;Gary Fisher&quot;, &quot;suburb&quot;: &quot;Muizenberg&quot;}')">+ Create quote</button></div></div>
+      <div class="quotes-on-card"><div class="doc-inline"><span class="dchip doc-unpaid">Invoice unpaid</span><span class="doc-no">INV-PORTAL-0002</span><span class="doc-tot">R12,535.00</span><span class="doc-acts"><a class="btn btn-ghost" href="q/doc_274937b616034609.html" target="_blank">View</a><button class="btn btn-good" onclick="markPaid('doc_274937b616034609',this)">Mark paid</button></span></div><div class="qc-actions"><button class="btn btn-quote" onclick="openQuote('lead_2ca3dfaa0f3c5038','{&quot;name&quot;: &quot;Gary Fisher&quot;, &quot;suburb&quot;: &quot;Muizenberg&quot;}')">+ Create quote</button></div></div>
       
     </div>
     <div class="card" data-state="WON">
@@ -219,13 +219,13 @@
         <table>
           <thead><tr><th>Status</th><th>Number</th><th>Customer</th>
           <th class="num">Total</th><th class="num">Actions</th></tr></thead>
-          <tbody><tr><td><span class="dchip doc-quote">Quote</span></td><td><a href="q/doc_274937b616034609.html" target="_blank">Q-PORTAL-0002</a></td><td>Gary Fisher</td><td class="num">R12,535.00</td><td class="num"><a class="btn btn-ghost" href="q/doc_274937b616034609.html" target="_blank">View</a><button class="btn btn-primary" onclick="convertInvoice('doc_274937b616034609',this)">Convert to invoice</button></td></tr><tr><td><span class="dchip doc-paid">Invoice paid</span></td><td><a href="q/doc_8bd65ffd6ef343a0.html" target="_blank">INV-PORTAL-0001</a></td><td>Priya Naidoo</td><td class="num">R9,027.50</td><td class="num"><a class="btn btn-ghost" href="q/doc_8bd65ffd6ef343a0.html" target="_blank">View</a></td></tr></tbody>
+          <tbody><tr><td><span class="dchip doc-unpaid">Invoice unpaid</span></td><td><a href="q/doc_274937b616034609.html" target="_blank">INV-PORTAL-0002</a></td><td>Gary Fisher</td><td class="num">R12,535.00</td><td class="num"><a class="btn btn-ghost" href="q/doc_274937b616034609.html" target="_blank">View</a><button class="btn btn-good" onclick="markPaid('doc_274937b616034609',this)">Mark paid</button></td></tr><tr><td><span class="dchip doc-paid">Invoice paid</span></td><td><a href="q/doc_8bd65ffd6ef343a0.html" target="_blank">INV-PORTAL-0001</a></td><td>Priya Naidoo</td><td class="num">R9,027.50</td><td class="num"><a class="btn btn-ghost" href="q/doc_8bd65ffd6ef343a0.html" target="_blank">View</a></td></tr></tbody>
         </table>
       </div>
 
   <div class="foot">
-    Updated 2026-06-27 17:10. This portal and your WhatsApp show the same leads, the moment anything changes.<br>
-    Paid invoices: 1 &middot; Unpaid: 0 &middot; Open quotes: 1.<br>
+    Updated 2026-06-27 17:11. This portal and your WhatsApp show the same leads, the moment anything changes.<br>
+    Paid invoices: 1 &middot; Unpaid: 1 &middot; Open quotes: 0.<br>
     Questions about a lead? hello@glowretrieval.com
   </div>
 </div>
