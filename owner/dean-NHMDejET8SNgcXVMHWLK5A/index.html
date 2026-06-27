@@ -55,7 +55,7 @@
 <body>
 <header>
   <div><span class="brand">GLOW RETRIEVAL <span>Owner Dashboard</span></span></div>
-  <div class="refresh">Auto-refreshes every 60s &nbsp;&middot;&nbsp; 2026-06-27 15:03:22 SAST</div>
+  <div class="refresh">Auto-refreshes every 60s &nbsp;&middot;&nbsp; 2026-06-27 15:09:22 SAST</div>
 </header>
 
 <div class="container">
@@ -79,7 +79,7 @@
     <div class="card">
       <div class="card-title">Signed Contractors</div>
       <div class="big-number">0</div>
-      <div class="big-sub">1 active suburbs, 2 targeted</div>
+      <div class="big-sub">0 active suburbs, 2 targeted</div>
     </div>
   </div>
 
@@ -141,7 +141,69 @@
 
 
   <h2 style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#F5B800;margin:8px 0 16px">Lead Quality and Conversion</h2>
-  <div class="card"><div class="empty">No leads have moved through the pipeline yet. The funnel (delivered, accepted, contacted, booked, won), conversion rates and average job value will appear here the moment contractors start working leads.</div></div>
+  
+  <div class="grid-4">
+    <div class="card">
+      <div class="card-title">Delivered to Accepted</div>
+      <div class="big-number gold">100%</div>
+      <div class="big-sub">3 of 3 offers accepted</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Accepted to Won</div>
+      <div class="big-number green">66.7%</div>
+      <div class="big-sub">2 sales closed</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Avg Job Value</div>
+      <div class="big-number">R7,500</div>
+      <div class="big-sub">across won leads</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Earned By Contractors</div>
+      <div class="big-number gold">R15,000</div>
+      <div class="big-sub">total job value off our leads</div>
+    </div>
+  </div>
+  <div class="card grid-1">
+    <div class="section-title">Lead Quality By Suburb</div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr><th>Suburb</th><th>Delivered</th><th>Accepted</th><th>Accept Rate</th>
+        <th>Contact Rate</th><th>Booking Rate</th><th>Close Rate</th><th>Avg Job</th></tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><strong>Hout Bay</strong></td>
+        <td>3</td>
+        <td>3</td>
+        <td>100%</td>
+        <td>100%</td>
+        <td>66.7%</td>
+        <td class="green">66.7%</td>
+        <td class="gold">R7,500</td>
+      </tr></tbody>
+    </table>
+    </div>
+    <div class="note">Funnel: delivered to a contractor, accepted (credit spent), contacted, booked, won.
+    Rates are share of accepted leads. This is the honest picture of how well our leads convert.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="section-title">Conversion By Niche</div>
+      <div class="stat-row"><span class="label">drycape (3 delivered, 2 won)</span><span class="val gold">66.7% close</span></div>
+    </div>
+    <div class="card">
+      <div class="section-title">Pipeline Funnel (all niches)</div>
+      <div class="stat-row"><span class="label">Delivered</span><span class="val">3</span></div>
+      <div class="stat-row"><span class="label">Accepted</span><span class="val">3</span></div>
+      <div class="stat-row"><span class="label">Contacted</span><span class="val">3</span></div>
+      <div class="stat-row"><span class="label">Booked</span><span class="val">2</span></div>
+      <div class="stat-row"><span class="label">Won</span><span class="val green">2</span></div>
+      <div class="stat-row"><span class="label">Lost</span><span class="val grey">1</span></div>
+    </div>
+  </div>
 
   <div class="grid-2">
     <div class="card">
@@ -181,12 +243,6 @@
         <tr><th>Suburb</th><th>Services</th><th>Contractor</th><th>Status</th></tr>
       </thead>
       <tbody>
-            <tr>
-              <td>Hout-Bay</td>
-              <td class="grey">damp-proofing, rising-damp-treatment, waterproofing, roof-leak-repair</td>
-              <td>Dean (live test)</td>
-              <td><span class="badge badge-active">active</span></td>
-            </tr>
             <tr>
               <td>Constantia</td>
               <td class="grey">waterproofing, damp-proofing, rising-damp-treatment, roof-leak-repair, mould-treatment</td>
