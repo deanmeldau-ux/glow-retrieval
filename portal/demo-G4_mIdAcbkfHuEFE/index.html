@@ -133,6 +133,18 @@
     pointer-events:none;z-index:60;max-width:90%;text-align:center}
   #toast.show{opacity:1}
   @media(max-width:520px){.li-qty{width:54px}.li-price{width:88px}}
+  .lockpanel{background:#11131a;border:1px solid #2a2e3a;border-radius:14px;padding:18px 20px;margin:14px 0 4px}
+  .lock-title{font-size:13px;letter-spacing:.6px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px}
+  .lockcard{border-top:1px solid #23262f;padding:12px 0}
+  .lockcard:first-of-type{border-top:none;padding-top:0}
+  .lock-sub{font-size:16px;font-weight:700;color:var(--w);margin-bottom:6px}
+  .lock-on{font-size:11px;background:rgba(40,170,90,.16);color:#48d17e;border-radius:100px;padding:2px 9px;margin-left:6px;text-transform:uppercase;letter-spacing:.5px}
+  .lock-stat{margin:4px 0 8px}
+  .lock-big{font-size:26px;font-weight:800;color:var(--gold)}
+  .lock-lbl{font-size:13px;color:var(--grey);margin-left:8px}
+  .lock-line{font-size:13px;color:#c7cbd6;margin-top:4px}
+  .lock-flag{display:inline-block;background:rgba(220,140,40,.16);color:#f0a44a;border-radius:8px;padding:2px 8px;font-size:12px;margin-left:4px}
+  .lock-promise{margin-top:12px;font-size:13px;color:#9aa0ad;font-style:italic;border-top:1px solid #23262f;padding-top:10px}
 </style>
 </head>
 <body>
@@ -156,9 +168,10 @@
   </div>
   <div class="note">Each exclusive lead costs R250, charged up front when you accept, never on terms.
   Suburb lock: Active: Muizenberg.</div>
+  <div class="lockpanel"><div class="lock-title">Your suburb lock</div><div class="lockcard"><div class="lock-sub">Muizenberg <span class="lock-on">Locked</span></div><div class="lock-stat"><span class="lock-big">0 of 20</span> <span class="lock-lbl">20 included leads left this month</span></div><div class="lock-line">No extra leads yet. Lead 21 onward is R250 each, offered to you first.</div><div class="lock-line">Monthly fee R2,500 &middot; next bill 2026-08-28</div></div><div class="lock-promise">You are first on every lead in your suburb. Nobody is ahead of you. The only time someone else gets one is when you did not take it.</div></div>
 
   <h2 class="sec">Your lead pipeline</h2>
-  <div class="filters"><button class="fchip" data-filter="all" onclick="setFilter(this)">All <span class="fnum">4</span></button><button class="fchip" data-filter="open" onclick="setFilter(this)">In play <span class="fnum">2</span></button><button class="fchip" data-filter="DELIVERED" onclick="setFilter(this)">New offers <span class="fnum">1</span></button><button class="fchip" data-filter="ACCEPTED" onclick="setFilter(this)">Accepted <span class="fnum">0</span></button><button class="fchip" data-filter="CONTACTED" onclick="setFilter(this)">Contacted <span class="fnum">1</span></button><button class="fchip" data-filter="QUOTE_SENT" onclick="setFilter(this)">Quote sent <span class="fnum">0</span></button><button class="fchip" data-filter="BOOKED" onclick="setFilter(this)">Booked <span class="fnum">0</span></button><button class="fchip" data-filter="WON" onclick="setFilter(this)">Won <span class="fnum">2</span></button><button class="fchip" data-filter="LOST" onclick="setFilter(this)">Lost <span class="fnum">0</span></button></div>
+  <div class="filters"><button class="fchip" data-filter="all" onclick="setFilter(this)">All <span class="fnum">3</span></button><button class="fchip" data-filter="open" onclick="setFilter(this)">In play <span class="fnum">1</span></button><button class="fchip" data-filter="DELIVERED" onclick="setFilter(this)">New offers <span class="fnum">0</span></button><button class="fchip" data-filter="ACCEPTED" onclick="setFilter(this)">Accepted <span class="fnum">0</span></button><button class="fchip" data-filter="CONTACTED" onclick="setFilter(this)">Contacted <span class="fnum">1</span></button><button class="fchip" data-filter="QUOTE_SENT" onclick="setFilter(this)">Quote sent <span class="fnum">0</span></button><button class="fchip" data-filter="BOOKED" onclick="setFilter(this)">Booked <span class="fnum">0</span></button><button class="fchip" data-filter="WON" onclick="setFilter(this)">Won <span class="fnum">2</span></button><button class="fchip" data-filter="LOST" onclick="setFilter(this)">Lost <span class="fnum">0</span></button></div>
   <div id="board">
     <div class="card" data-state="WON">
       <div class="card-top">
@@ -198,19 +211,6 @@
       
       <div class="quotes-on-card"><div class="qc-actions"><button class="btn btn-quote" onclick="openQuote('lead_c111a5e82949a980','{&quot;name&quot;: &quot;Mandla Zulu&quot;, &quot;suburb&quot;: &quot;Muizenberg&quot;}')">+ Create quote</button></div></div>
       <div class="actions"><button class="btn btn-primary" onclick="act('quote_sent','lead_c111a5e82949a980',this)">Quote sent</button><button class="btn btn-primary" onclick="act('booked','lead_c111a5e82949a980',this)">Booked</button><button class="btn btn-good" onclick="act('won','lead_c111a5e82949a980',this)">Won</button><button class="btn btn-ghost" onclick="act('lost','lead_c111a5e82949a980',this)">Lost</button><button class="btn btn-ghost" onclick="addNote('lead_c111a5e82949a980')">Add note</button></div>
-    </div>
-    <div class="card" data-state="DELIVERED">
-      <div class="card-top">
-        <span class="chip chip-offer">Offered</span>
-        <span class="when">2026-06-27</span>
-      </div>
-      <div class="loc">Muizenberg &middot; Roof leak repair</div>
-      <div class="contact"><div class="muted">Homeowner name and number unlock when you accept (one credit).</div></div>
-      <div class="detail">Roof leak over the main bedroom after the storm.</div>
-      
-      
-      
-      <div class="actions"><button class="btn btn-primary" onclick="act('accept','lead_1b0585c975e60f02',this)">Accept lead</button><button class="btn btn-ghost" onclick="act('pass','lead_1b0585c975e60f02',this)">Pass</button><button class="btn btn-ghost" onclick="addNote('lead_1b0585c975e60f02')">Add note</button></div>
     </div></div>
 
   <h2 class="sec">Quotes and invoices <span class="tag on">Quote tools on</span></h2>
@@ -224,7 +224,7 @@
       </div>
 
   <div class="foot">
-    Updated 2026-06-27 17:12. This portal and your WhatsApp show the same leads, the moment anything changes.<br>
+    Updated 2026-06-28 03:52. This portal and your WhatsApp show the same leads, the moment anything changes.<br>
     Paid invoices: 1 &middot; Unpaid: 1 &middot; Open quotes: 1.<br>
     Questions about a lead? hello@glowretrieval.com
   </div>
@@ -266,7 +266,7 @@
 
 <div id="toast"></div>
 <script>
-const CFG = {"contractor_id": "glow-demo-portal", "token": "demo-G4_mIdAcbkfHuEFE", "api_base": "https://introductory-jeffrey-daily-stockings.trycloudflare.com", "subscriber": true, "business": {"name": "Table Mountain Damp Solutions", "contact": "Andre van der Merwe", "phone": "021 555 0912", "email": "quotes@tmdamp.co.za", "address": "8 Beach Road, Muizenberg, Cape Town, 7945", "banking": "Table Mountain Damp Solutions\nFNB Business Cheque\nAcc 6209988776\nBranch 250655\nReference: the invoice number"}};
+const CFG = {"contractor_id": "glow-demo-portal", "token": "demo-G4_mIdAcbkfHuEFE", "api_base": "https://shanghai-apt-browsers-some.trycloudflare.com", "subscriber": true, "business": {"name": "Table Mountain Damp Solutions", "contact": "Andre van der Merwe", "phone": "021 555 0912", "email": "quotes@tmdamp.co.za", "address": "8 Beach Road, Muizenberg, Cape Town, 7945", "banking": "Table Mountain Damp Solutions\nFNB Business Cheque\nAcc 6209988776\nBranch 250655\nReference: the invoice number"}};
 let FILTER = "all";
 const TERMINAL = ["WON","LOST"];
 let Q = {lead_id:"", lines:[]};
