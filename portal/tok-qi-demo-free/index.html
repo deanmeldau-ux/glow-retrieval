@@ -133,6 +133,18 @@
     pointer-events:none;z-index:60;max-width:90%;text-align:center}
   #toast.show{opacity:1}
   @media(max-width:520px){.li-qty{width:54px}.li-price{width:88px}}
+  .lockpanel{background:#11131a;border:1px solid #2a2e3a;border-radius:14px;padding:18px 20px;margin:14px 0 4px}
+  .lock-title{font-size:13px;letter-spacing:.6px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px}
+  .lockcard{border-top:1px solid #23262f;padding:12px 0}
+  .lockcard:first-of-type{border-top:none;padding-top:0}
+  .lock-sub{font-size:16px;font-weight:700;color:var(--w);margin-bottom:6px}
+  .lock-on{font-size:11px;background:rgba(40,170,90,.16);color:#48d17e;border-radius:100px;padding:2px 9px;margin-left:6px;text-transform:uppercase;letter-spacing:.5px}
+  .lock-stat{margin:4px 0 8px}
+  .lock-big{font-size:26px;font-weight:800;color:var(--gold)}
+  .lock-lbl{font-size:13px;color:var(--grey);margin-left:8px}
+  .lock-line{font-size:13px;color:#c7cbd6;margin-top:4px}
+  .lock-flag{display:inline-block;background:rgba(220,140,40,.16);color:#f0a44a;border-radius:8px;padding:2px 8px;font-size:12px;margin-left:4px}
+  .lock-promise{margin-top:12px;font-size:13px;color:#9aa0ad;font-style:italic;border-top:1px solid #23262f;padding-top:10px}
 </style>
 </head>
 <body>
@@ -156,6 +168,7 @@
   </div>
   <div class="note">Each exclusive lead costs R250, charged up front when you accept, never on terms.
   Suburb lock: Not locked.</div>
+  
 
   <h2 class="sec">Your lead pipeline</h2>
   <div class="filters"><button class="fchip" data-filter="all" onclick="setFilter(this)">All <span class="fnum">1</span></button><button class="fchip" data-filter="open" onclick="setFilter(this)">In play <span class="fnum">1</span></button><button class="fchip" data-filter="DELIVERED" onclick="setFilter(this)">New offers <span class="fnum">0</span></button><button class="fchip" data-filter="ACCEPTED" onclick="setFilter(this)">Accepted <span class="fnum">1</span></button><button class="fchip" data-filter="CONTACTED" onclick="setFilter(this)">Contacted <span class="fnum">0</span></button><button class="fchip" data-filter="QUOTE_SENT" onclick="setFilter(this)">Quote sent <span class="fnum">0</span></button><button class="fchip" data-filter="BOOKED" onclick="setFilter(this)">Booked <span class="fnum">0</span></button><button class="fchip" data-filter="WON" onclick="setFilter(this)">Won <span class="fnum">0</span></button><button class="fchip" data-filter="LOST" onclick="setFilter(this)">Lost <span class="fnum">0</span></button></div>
@@ -178,7 +191,7 @@
   <div id="subscribe" class="upsell-card"><div class="upsell-head">Quotes and invoices</div><p>Send the homeowner a clean, branded quote in seconds, then turn it into an invoice the moment you win the job. Track paid and unpaid in one place, with your own business name, logo and banking on every document.</p><p class="upsell-gate">This is included free when you lock a suburb on the monthly plan. On pay per lead it stays locked.</p><a class="btn-gold" href="mailto:hello@glowretrieval.com?subject=Lock a suburb and unlock quotes">Lock a suburb and unlock quotes</a></div>
 
   <div class="foot">
-    Updated 2026-06-27 16:58. This portal and your WhatsApp show the same leads, the moment anything changes.<br>
+    Updated 2026-06-28 03:52. This portal and your WhatsApp show the same leads, the moment anything changes.<br>
     Paid invoices: 0 &middot; Unpaid: 0 &middot; Open quotes: 0.<br>
     Questions about a lead? hello@glowretrieval.com
   </div>
@@ -188,7 +201,7 @@
 
 <div id="toast"></div>
 <script>
-const CFG = {"contractor_id": "qi-demo-free", "token": "tok-qi-demo-free", "api_base": "https://introductory-jeffrey-daily-stockings.trycloudflare.com", "subscriber": false, "business": {"name": "Solo Waterproofing (demo)", "phone": "27000000202"}};
+const CFG = {"contractor_id": "qi-demo-free", "token": "tok-qi-demo-free", "api_base": "https://shanghai-apt-browsers-some.trycloudflare.com", "subscriber": false, "business": {"name": "Solo Waterproofing (demo)", "phone": "27000000202"}};
 let FILTER = "all";
 const TERMINAL = ["WON","LOST"];
 let Q = {lead_id:"", lines:[]};
