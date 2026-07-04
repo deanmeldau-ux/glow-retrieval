@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- SITE-CACHE-VERSION: 20260704-1 (bump this token AND the ?v= on media below on every asset change so returning/installed phones never serve a stale copy) -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Glow Retrieval - Exclusive Cape Town Service Leads, Single Routed To You</title>
   <meta name="description" content="Glow Retrieval builds and ranks niche Cape Town service websites, captures homeowner enquiries, and sends them as exclusive leads to one local provider. Never shared. Pay per lead or own your suburb.">
   <link rel="icon" href="/logo.svg">
@@ -187,6 +191,65 @@
     }
     .btn-secondary:hover { border-color: var(--gold); background: #0f0d07; }
     .hero-reassure { margin-top: 22px; font-size: 14px; color: var(--grey); }
+
+    /* VIDEO HERO (front and centre, above the fold) */
+    .video-hero {
+      text-align: center;
+      padding: 26px 18px 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .video-hero .hero-eyebrow { margin-bottom: 18px; }
+    .video-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(30px, 7vw, 52px);
+      line-height: 1.0;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+    .video-hero h1 .highlight { color: var(--gold); }
+    /* Portrait 9:16 clip. Width is tied to viewport height so the whole video
+       plus the CTA below it always fits above the fold on a phone. */
+    .video-frame {
+      position: relative;
+      width: 100%;
+      max-width: min(340px, 34vh);
+      margin: 0 auto 22px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(245,184,0,0.35);
+      box-shadow: 0 0 50px rgba(245,184,0,0.16);
+      background: #000;
+    }
+    .video-frame video {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #000;
+    }
+    .video-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .video-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 900;
+      font-size: 18px;
+      padding: 18px 40px;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: transform 0.1s, background 0.15s, box-shadow 0.15s;
+      box-shadow: 0 0 44px rgba(245,184,0,0.3);
+      max-width: 360px;
+      width: 100%;
+      justify-content: center;
+    }
+    .video-cta:hover { background: #ffd040; transform: translateY(-2px); box-shadow: 0 0 64px rgba(245,184,0,0.45); }
+    .video-cta svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .video-cta-note { font-size: 13.5px; color: var(--grey); margin: 0; }
 
     /* TRUST STRIP */
     .trust-strip {
@@ -599,6 +662,12 @@
       section { padding: 60px 18px; }
       .section-sub { font-size: 17px; }
       .hero { padding: 56px 18px 48px; }
+      .video-hero { padding: 12px 16px 22px; }
+      .video-hero .hero-eyebrow { margin-bottom: 12px; }
+      .video-hero h1 { font-size: clamp(23px, 6.5vw, 34px); margin-bottom: 12px; }
+      .video-frame { max-width: min(280px, 33vh); margin-bottom: 14px; }
+      .video-cta { font-size: 17px; padding: 16px 30px; }
+      .video-cta-note { font-size: 12.5px; }
       .hero-eyebrow { font-size: 11px; letter-spacing: 1px; padding: 6px 13px; margin-bottom: 24px; }
       .hero-ctas { gap: 12px; }
       .btn-primary, .btn-secondary { width: 100%; justify-content: center; font-size: 16px; padding: 17px 28px; }
@@ -648,6 +717,28 @@
     <a href="#pricing" class="nav-cta">See Pricing</a>
   </div>
 </nav>
+
+<!-- VIDEO HERO -->
+<div class="video-hero">
+  <div class="hero-eyebrow"><span class="dot"></span> Exclusive Leads For Cape Town Contractors</div>
+  <h1>SEE HOW IT WORKS <span class="highlight">IN 60 SECONDS</span></h1>
+  <div class="video-frame">
+    <video
+      src="media/contractor-promo.mp4?v=20260704-1"
+      poster="media/contractor-promo-poster.jpg?v=20260704-1"
+      autoplay muted loop playsinline controls preload="metadata"
+      aria-label="Glow Retrieval for contractors: how exclusive damp and waterproofing leads reach you">
+      Your browser does not support video. Watch on WhatsApp or ask us for the link.
+    </video>
+  </div>
+  <div class="video-cta-wrap">
+    <a href="https://wa.me/27769896742?text=Hi%2C%20I%27m%20a%20Cape%20Town%20contractor%20and%20I%27d%20like%20to%20start%20with%20my%203%20free%20leads%20from%20Glow%20Retrieval" class="video-cta" target="_blank" rel="noopener">
+      Start with 3 free leads
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <p class="video-cta-note">One WhatsApp message opts you in. No card, no contract.</p>
+  </div>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -1003,18 +1094,18 @@
       <div class="pricing-badge">Most Popular</div>
       <div class="pricing-tier">Suburb Exclusive</div>
       <div class="pricing-price"><span class="currency">R</span>2,500 <span class="per">/ month</span></div>
-      <div class="pricing-range">Everything in Pay Per Lead, plus the tools to close</div>
-      <div class="pricing-desc">Own one Cape Town suburb outright. Every qualified enquiry from that area comes to you and only you, with no per lead charge no matter how many land. Then we hand you the kit to actually win them.</div>
+      <div class="pricing-range">First right of refusal on your whole suburb, plus the tools to close</div>
+      <div class="pricing-desc">Lock one Cape Town suburb and be first on every lead in it. Nobody is ahead of you in the queue. The only time another contractor gets one is when you did not take it. Up to 20 leads a month are included, then we hand you the kit to win them.</div>
       <ul class="pricing-features">
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> <strong>Unlimited</strong> exclusive leads in your suburb, all yours</li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> No rival can ever buy into your area</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> <strong>First on every lead</strong> in your suburb, nobody ahead of you in the queue</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> <strong>20 leads a month included</strong>, no per lead charge on any of them</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> A longer window to claim each lead, plus a reminder before it lapses</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Lead 21 onward stays yours first at just R250, one tap to take it</li>
         <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> <strong>Quote &amp; invoice tool built into your CRM</strong> (monthly only): branded quote in seconds, one tap to convert to an invoice when you win</li>
         <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Your own live pipeline portal to track every job</li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Priority routing, your leads go out first</li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Flat predictable cost, no per lead surprises</li>
         <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Cancel any time, no lock-in</li>
       </ul>
-      <div class="pricing-math">Most suburbs we route send well past 10 jobs a month. At R250 a lead that is R2,500 in pay per lead <em>before you have closed a thing</em>. On Suburb Exclusive that is your whole bill. Every extra lead, the quoting tool and the CRM are included on top.</div>
+      <div class="pricing-math">Most suburbs we route send well past 10 jobs a month. At R250 a lead that is R2,500 in pay per lead <em>before you have closed a thing</em>. On Suburb Exclusive those first 20 leads a month are your whole bill, you are first on all of them, and the quoting tool and CRM are included on top.</div>
       <a href="onboarding.html?plan=suburb" class="pricing-btn">Claim Your Suburb</a>
     </div>
 
