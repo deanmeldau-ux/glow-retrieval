@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Glow Retrieval - Owner Dashboard</title>
+  <meta http-equiv="refresh" content="60">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--black:#080808;--s:#111;--s2:#1a1a1a;--gold:#F5B800;--w:#fff;--grey:#999;--green:#22c55e;--amber:#f59e0b;--red:#ef4444;--blue:#3b82f6}
+    body{background:var(--black);color:var(--w);font-family:-apple-system,'Inter',sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+    a{color:var(--gold);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{background:var(--s);border-bottom:1px solid #1f1f1f;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+    .brand{font-size:18px;font-weight:900;letter-spacing:1px;color:var(--gold)}
+    .brand span{color:var(--grey);font-weight:400;font-size:13px;margin-left:10px}
+    .refresh{font-size:12px;color:var(--grey)}
+    .container{max-width:1400px;margin:0 auto;padding:32px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
+    .grid-1{margin-bottom:32px}
+    .card{background:var(--s);border:1px solid #1f1f1f;border-radius:12px;padding:24px}
+    .card-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
+    .big-number{font-size:48px;font-weight:900;line-height:1;color:var(--w)}
+    .big-number.gold{color:var(--gold)}
+    .big-number.green{color:var(--green)}
+    .big-sub{font-size:13px;color:var(--grey);margin-top:4px}
+    .section-title{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+    table{width:100%;border-collapse:collapse}
+    th{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);text-align:left;padding:10px 12px;border-bottom:1px solid #1f1f1f}
+    td{padding:12px;border-bottom:1px solid #141414;font-size:14px;vertical-align:middle}
+    tr:last-child td{border-bottom:none}
+    tr:hover td{background:#0f0f0f}
+    .badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+    .badge-high,.badge-active{background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.2)}
+    .badge-medium,.badge-proposed{background:rgba(245,184,0,.12);color:var(--gold);border:1px solid rgba(245,184,0,.25)}
+    .badge-low,.badge-unassigned{background:rgba(153,153,153,.12);color:var(--grey);border:1px solid rgba(153,153,153,.25)}
+    .badge-amber{background:rgba(245,184,0,.12);color:var(--gold);border:1px solid rgba(245,184,0,.25)}
+    .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+    .dot-green{background:var(--green);box-shadow:0 0 6px var(--green)}
+    .dot-amber{background:var(--amber);box-shadow:0 0 6px var(--amber)}
+    .dot-grey{background:var(--grey)}
+    .stat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #141414;font-size:14px}
+    .stat-row:last-child{border-bottom:none}
+    .stat-row .label{color:var(--grey)}
+    .stat-row .val{font-weight:700}
+    .empty{color:var(--grey);font-size:13px;text-align:center;padding:24px}
+    .green{color:var(--green)}
+    .gold{color:var(--gold)}
+    .grey{color:var(--grey);font-size:13px}
+    .note{font-size:12px;color:var(--grey);margin-top:10px}
+    @media(max-width:900px){.grid-4{grid-template-columns:1fr 1fr}.grid-2{grid-template-columns:1fr}}
+    @media(max-width:500px){.grid-4{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<header>
+  <div><span class="brand">GLOW RETRIEVAL <span>Owner Dashboard</span></span></div>
+  <div class="refresh">Auto-refreshes every 60s &nbsp;&middot;&nbsp; 2026-07-07 18:06:23 SAST</div>
+</header>
+
+<div class="container">
+
+  <div class="grid-4">
+    <div class="card">
+      <div class="card-title">Leads Captured</div>
+      <div class="big-number gold">0</div>
+      <div class="big-sub">0 this month</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Leads Delivered</div>
+      <div class="big-number green">0</div>
+      <div class="big-sub">0 pending or held</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Revenue To Date</div>
+      <div class="big-number">R0</div>
+      <div class="big-sub">R0 currently owed</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Signed Contractors</div>
+      <div class="big-number">0</div>
+      <div class="big-sub">0 active suburbs, 2 targeted</div>
+    </div>
+  </div>
+
+  <div class="card grid-1">
+    <div class="section-title">Contractors</div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr><th>Contractor</th><th>Plan</th><th>Suburbs</th><th>Leads All Time</th><th>This Month</th><th>Billing</th><th>Owed</th><th></th></tr>
+      </thead>
+      <tbody><tr><td colspan="8" class="empty">No contractors signed yet. Sign the first damp-proofing contractor and their dashboard appears here.</td></tr></tbody>
+    </table>
+    </div>
+  </div>
+
+  <h2 style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#F5B800;margin:8px 0 16px">Billing and Revenue</h2>
+  
+  <div class="grid-4">
+    <div class="card">
+      <div class="card-title">Revenue To Date</div>
+      <div class="big-number gold">R0</div>
+      <div class="big-sub">confirmed payments (real money)</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Awaiting Payment</div>
+      <div class="big-number">R0</div>
+      <div class="big-sub">links sent, not yet paid</div>
+    </div>
+    <div class="card">
+      <div class="card-title">MRR (suburb locks)</div>
+      <div class="big-number green">R0</div>
+      <div class="big-sub">monthly recurring</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Credits Outstanding</div>
+      <div class="big-number">0</div>
+      <div class="big-sub">R0 of prepaid leads owed</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="section-title">Paid vs Unpaid (per contractor)</div>
+      <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr><th>Contractor</th><th>Paid</th><th>Awaiting</th><th>Credits</th><th>Leads</th><th>Locks</th></tr>
+        </thead>
+        <tbody><tr><td colspan="6" class="empty">No billing activity yet. Revenue, paid vs unpaid and credits appear here once a contractor buys credits.</td></tr></tbody>
+      </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-title">Revenue By Niche</div>
+      <div class="stat-row"><span class="label">DryCape</span><span class="val grey">R0</span></div>
+      <div class="note">Billing module loaded: yes. Active gateway and credit packs are configured in billing/. Demo rows are excluded from these figures.</div>
+    </div>
+  </div>
+
+
+  <h2 style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#F5B800;margin:8px 0 16px">Lead Quality and Conversion</h2>
+  <div class="card"><div class="empty">No leads have moved through the pipeline yet. The funnel (delivered, accepted, contacted, booked, won), conversion rates and average job value will appear here the moment contractors start working leads.</div></div>
+
+  <h2 style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#F5B800;margin:8px 0 16px">Suburb Exclusive (first right of refusal)</h2>
+  
+  <div class="grid-4">
+    <div class="card">
+      <div class="card-title">Overage Revenue</div>
+      <div class="big-number gold">R0</div>
+      <div class="big-sub">leads beyond the included 20, at R250 each</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Lock Owners Tracked</div>
+      <div class="big-number">0</div>
+      <div class="big-sub">on first right of refusal</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Owners Flagged</div>
+      <div class="big-number">0</div>
+      <div class="big-sub">3+ leads rolled this month</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Model</div>
+      <div class="big-number green">20</div>
+      <div class="big-sub">leads included in R2500/mo, then R250</div>
+    </div>
+  </div>
+  <div class="card grid-1">
+    <div class="section-title">Suburb Exclusive Owners (accept rate)</div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr><th>Owner</th><th>Offered</th><th>Accepted</th><th>Rolled</th><th>Accept Rate</th>
+        <th>Rolled This Month</th><th>Status</th></tr>
+      </thead>
+      <tbody><tr><td colspan="7" class="empty">No suburb-lock leads have been offered yet. Each locked owner gets first refusal on every lead in their suburb; their accept rate and any rolled leads appear here.</td></tr></tbody>
+    </table>
+    </div>
+    <div class="note">A locked owner is first on every lead in their suburb. If they do not take it in
+    their window it rolls to a backup (who pays R250) so the homeowner is still served. An owner who
+    keeps letting leads roll (3+ in a month) is flagged for a quiet conversation.</div>
+  </div>
+
+  <h2 style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#F5B800;margin:8px 0 16px">Dud Validation and Refund Abuse</h2>
+  
+  <div class="grid-4">
+    <div class="card">
+      <div class="card-title">Dud Cap</div>
+      <div class="big-number gold">20%</div>
+      <div class="big-sub">of accepted leads, rolling 30 days</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Over The Cap</div>
+      <div class="big-number">0</div>
+      <div class="big-sub">pending Dean review</div>
+    </div>
+    <div class="card">
+      <div class="card-title">False-Dud Flags</div>
+      <div class="big-number">0</div>
+      <div class="big-sub">homeowner said the lead was valid</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Verify Channel</div>
+      <div class="big-number green">Email</div>
+      <div class="big-sub">DryCape email live, WhatsApp future upgrade</div>
+    </div>
+  </div>
+  <div class="card grid-1">
+    <div class="section-title">Dud Rate By Contractor (rolling 30 days)</div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr><th>Contractor</th><th>Accepted</th><th>Duds</th><th>Confirmed Bad</th>
+        <th>False</th><th>Unconfirmed</th><th>Dud Rate</th><th>Status</th></tr>
+      </thead>
+      <tbody><tr><td colspan="8" class="empty">No duds reported in the last 30 days. Per-contractor dud rate, false-dud flags and cap status appear here.</td></tr></tbody>
+    </table>
+    </div>
+    <div class="note">A contractor may refund duds up to 20% of their accepted leads.
+    The cap is weighted by the homeowner's answer: confirmed-false duds count hard and trigger the cap,
+    silent (unconfirmed) duds count lightly, and homeowner-confirmed bad duds do not count, so honest
+    contractors are protected. Over the cap, a further silent dud is held for your review rather than
+    auto-refunded.</div>
+  </div>
+  <div class="card grid-1">
+    <div class="section-title">Duds Pending Review or Verification</div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr><th>Homeowner and suburb</th><th>Contractor</th><th>Status</th><th>Reason</th><th>Homeowner keen</th></tr>
+      </thead>
+      <tbody><tr><td colspan="5" class="empty">Nothing pending. Duds flagged for review (over cap) or still being verified with the homeowner will list here.</td></tr></tbody>
+    </table>
+    </div>
+    <div class="note">Homeowner keen means the verification revived the lead: it can be re-offered to the
+    same contractor first, then rolled. Homeowner messages are DryCape branded only and never mention Glow.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="section-title">Niche Breakdown</div>
+      <div class="stat-row"><span class="label">DryCape (damp proofing, Cape Town)</span><span class="val gold">LIVE</span></div>
+      <div class="stat-row"><span class="label">DryCape leads captured</span><span class="val">0</span></div>
+      <div class="stat-row"><span class="label">DryCape leads this month</span><span class="val">0</span></div>
+      <div class="stat-row"><span class="label">Next niche</span><span class="val grey">Not launched yet</span></div>
+      <div class="note">DryCape is the first trade niche. Others get added the same way: rank a niche site, capture, deliver exclusively.</div>
+    </div>
+    <div class="card">
+      <div class="section-title">System Health</div>
+      <div class="stat-row"><span class="label">Capture endpoint (tunnel)</span><span class="val"><span class="dot dot-green"></span>live</span></div>
+      <div class="stat-row"><span class="label">Webhook (Ryan)</span><span class="val">127.0.0.1:8080</span></div>
+      <div class="stat-row"><span class="label">Homeowner confirmation email</span><span class="val green">Wired</span></div>
+      <div class="note" style="word-break:break-all">Tunnel: https://hooks.glowretrieval.com</div>
+    </div>
+  </div>
+
+  <div class="card grid-1">
+    <div class="section-title">Recent Captured Leads (newest 25)</div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr><th>Received</th><th>Suburb</th><th>Homeowner</th><th>Phone</th><th>Service</th><th>Quality</th></tr>
+      </thead>
+      <tbody><tr><td colspan="6" class="empty">No homeowner leads captured yet. They will appear here the moment a DryCape enquiry comes in.</td></tr></tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="card grid-1">
+    <div class="section-title">Suburb Routing (exclusivity ledger)</div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr><th>Suburb</th><th>Services</th><th>Contractor</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+            <tr>
+              <td>Constantia</td>
+              <td class="grey">waterproofing, damp-proofing, rising-damp-treatment, roof-leak-repair, mould-treatment</td>
+              <td>EXAMPLE Specialist (not signed)</td>
+              <td><span class="badge badge-proposed">proposed</span></td>
+            </tr>
+            <tr>
+              <td>Muizenberg</td>
+              <td class="grey">waterproofing, damp-proofing, rising-damp-treatment, roof-leak-repair</td>
+              <td>EXAMPLE Coastal Specialist (not signed)</td>
+              <td><span class="badge badge-proposed">proposed</span></td>
+            </tr></tbody>
+    </table>
+    </div>
+    <div class="note">A suburb only delivers live once a contractor there is marked active in lead_routing.json. Proposed means a target we may pitch, not signed.</div>
+  </div>
+
+</div>
+<footer style="text-align:center;padding:28px 16px;margin-top:32px;border-top:1px solid #e3e3e3;color:#888;font-size:12px;line-height:1.7">
+  DMG Holdings (Pty) Ltd t/a Glow Retrieval | Reg 2024/711773/07 | Unit 602, De Waal House, 172 Victoria Road, Woodstock
+</footer>
+</body>
+</html>
